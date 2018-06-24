@@ -1,0 +1,42 @@
+body{
+    background: linear-gradient(0.25turn, #22ccbb, #3a3daf);
+}
+
+h1{
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+h1 a {
+    margin-left: 10px;
+}
+
+h2{
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.card{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.voltar{
+    margin-bottom: 50px;
+}
+
+hr{
+    width: 80%;
+    margin-left: 10%;
+    border-top: 1px solid white;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+}

@@ -1,0 +1,63 @@
+<h1 class="titulo">Adicionar Novo Usuário</h1>
+
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+            <form method="post" action="/usuario/create">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="cpf">CPF</label>
+                      <input type="text" name="cpf" class="form-control" placeholder="CPF" required>
+                    </div>
+                    <div class="col-md-4 offset-md-4 mb-3">
+                      <label for="nome">Nome</label>
+                      <input type="text" name="nome" class="form-control" required>
+                    </div>
+                
+                    <div class="col-md-4 mb-3">
+                      <label for="nascimento">Data de Nascimento</label>
+                      <input type="date" name="nascimento" class="form-control" required>
+                    </div>
+                
+                    <div class="col-md-4 offset-md-4 mb-3">
+                      <label for="rg">RG</label>
+                      <input type="text" name="rg" class="form-control" required>
+                    </div>
+                
+                    <div class="col-md-4 mb-3">
+                      <label for="email">Email</label>
+                      <input type="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="col-md-4 offset-md-4 mb-3">
+                      <label for="senha">Senha</label>
+                      <input type="password" name="senha" class="form-control" required>
+                    </div>
+                </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="endereco">Endereço</label>
+                  <input type="text" name="endereco" class="form-control" placeholder="Endereço" required>
+                </div>
+                <div class="col-md-4 offset-md-4 mb-3">
+                  <label for="telefone">Telefone</label>
+                  <input type="text" name="telefone" class="form-control" placeholder="Telefone" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="cidade">Cidade</label>
+                  <input type="text" name="cidade" class="form-control" placeholder="Cidade" required>
+                </div>
+                <div class="col-md-4 offset-md-4 mb-3">
+                  <label for="estado">Estado</label>
+                  <input type="text" name="estado" class="form-control" placeholder="Estado" required>
+                </div>
+              </div>
+              <input class="btn btn-primary"  type="submit" value="Adicionar">
+            </form>
+        </div>
+    </div>
+    
+    <a href="/usuario/list" class="voltar btn btn-outline-light">Voltar aos Usuários</a>
+</div>

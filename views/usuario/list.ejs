@@ -1,0 +1,29 @@
+<h1 class="titulo">Usuários<a href="/usuario/add" class="btn btn-outline-light">Novo</a></h1>
+<div class="container-fluid">
+    <div class="row  justify-content-center">
+        <% usuarios.forEach(function(usuario){ %>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-header">CPF: <%= usuario.cpf %></div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= usuario.nome %></h5>
+                        <p class="card-text"><%= usuario.email %></p>
+                    
+                        <form method="post">
+                            <a href="/usuario/about/<%=usuario.cpf%>" class="btn btn-primary btn-sm mb-2 mt-2">Ver Mais</a>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <form method="post">
+                            <a href="/usuario/edit/<%=usuario.cpf%>" class="btn btn-warning btn-sm mb-2 mt-2">Editar</a>
+                            <a href="/usuario/delete/<%= usuario.cpf%>" class="btn btn-danger btn-sm mb-2 mt-2">Deletar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% })%>
+    </div>
+</div>
+
+
+

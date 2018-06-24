@@ -1,0 +1,28 @@
+<h1 class="titulo">Automóveis<a href="/automovel/add" class="btn btn-outline-light">Novo</a></h1>
+<div class="container-fluid">
+    <div class="row  justify-content-center">
+        <% automoveis.forEach(function(automovel){ %>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-header">Placa: <%= automovel.placa %></div>
+                    <div class="card-body"><%= automovel.modelo %></h5>
+                        <p class="card-text"><%= automovel.cor %></p>
+                    
+                        <form method="post">
+                            <a href="/automovel/about/<%=automovel.placa%>" class="btn btn-primary btn-sm mb-2 mt-2">Ver Mais</a>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <form method="post">
+                            <a href="/automovel/edit/<%=automovel.placa%>" class="btn btn-warning btn-sm mb-2 mt-2">Editar</a>
+                            <a href="/automovel/delete/<%=automovel.placa%>" class="btn btn-danger btn-sm mb-2 mt-2">Deletar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% })%>
+    </div>
+</div>
+
+
+
