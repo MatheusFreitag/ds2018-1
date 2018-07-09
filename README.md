@@ -75,9 +75,11 @@ Arquivo que contém todos os pacotes NPM necessários para rodar a aplicação.
 
 
 ## Inicialização
-1. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```javascript npm install ``` para instalar todos os pacotes listados em ```package.json```
-2. Setar as configurações do banco no arquivo ``` config/connections.js ``` e certificar-se que o banco esteja rodando.
-3. Executar o comando ``` sails lift ```
+1. Instalar o NodeJS
+2. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```javascript npm install ``` para instalar todos os pacotes listados em ```package.json```
+3. Setar as configurações do banco no arquivo ``` config/connections.js ```.
+4. Executar o dump do mysql presente na raiz do repositório para se ter as mesmas tabelas e entradas do projeto e certificar-se que o banco esteja rodando.
+5. Executar o comando ``` sails lift ```
 
 
 
