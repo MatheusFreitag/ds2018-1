@@ -18,7 +18,10 @@ module.exports = {
 	    res.view('automovel/add');
     },
     create: function(req,res){
-		Automovel.query(`INSERT INTO c9.automovel (placa, modelo, cor, chassi, dataInicio, dataFim, cidade, estado, disponibilidade, possuiSeguro, descricao) VALUES( "${req.body.placa}", "${req.body.modelo}", "${req.body.cor}", "${req.body.chassi}", "${req.body.dataInicio}", "${req.body.dataFim}", "${req.body.cidade}", "${req.body.estado}", "${req.body.disponibilidade}", "${req.body.possuiSeguro}", "${req.body.descricao}");`, [], function(err, usuarios){
+    	var ps,d;
+		if(req.body.possuiSeguro && req.body.possuiSeguro=="on"){ps = "1";} else {ps = "0";};
+		if(req.body.disponibilidade && req.body.disponibilidade=="on"){d = "1";} else {d = "0";};
+		Automovel.query(`INSERT INTO c9.automovel (placa, modelo, cor, chassi, dataInicio, dataFim, cidade, estado, disponibilidade, possuiSeguro, descricao) VALUES( "${req.body.placa}", "${req.body.modelo}", "${req.body.cor}", "${req.body.chassi}", "${req.body.dataInicio}", "${req.body.dataFim}", "${req.body.cidade}", "${req.body.estado}", "${d}", "${ps}", "${req.body.descricao}");`, [], function(err, usuarios){
 	        if(err){
 	            res.send(500, {error: "Database error"});
 	        }
@@ -43,7 +46,10 @@ module.exports = {
 		});
 	},
 	update: function(req,res){
-		Automovel.query(`UPDATE c9.automovel SET modelo = "${req.body.modelo}", cor = "${req.body.cor}", chassi = "${req.body.chassi}", dataInicio = "${req.body.dataInicio}", dataFim = "${req.body.dataFim}", cidade = "${req.body.cidade}", estado = "${req.body.estado}", disponibilidade = "${req.body.disponibilidade}", possuiSeguro = "${req.body.possuiSeguro}", descricao = "${req.body.descricao}" WHERE placa="${req.body.placa}";`, [], function(err, p){
+		var ps,d;
+		if(req.body.possuiSeguro && req.body.possuiSeguro=="on"){ps = "1";} else {ps = "0";};
+		if(req.body.disponibilidade && req.body.disponibilidade=="on"){d = "1";} else {d = "0";};
+		Automovel.query(`UPDATE c9.automovel SET modelo = "${req.body.modelo}", cor = "${req.body.cor}", chassi = "${req.body.chassi}", dataInicio = "${req.body.dataInicio}", dataFim = "${req.body.dataFim}", cidade = "${req.body.cidade}", estado = "${req.body.estado}", disponibilidade = "${d}", possuiSeguro = "${ps}", descricao = "${req.body.descricao}" WHERE placa="${req.body.placa}";`, [], function(err, p){
 		        if(err){
 		            res.send(500, {error: "Database error"});
 		        }

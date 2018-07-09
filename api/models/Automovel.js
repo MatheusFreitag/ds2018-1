@@ -22,7 +22,7 @@ module.exports = {
       type: 'string'
     },
     disponibilidade:{
-      type: 'boolean'
+      type: 'number'
     },
     dataInicio:{
       type: 'date'
@@ -40,10 +40,10 @@ module.exports = {
       type: 'string'
     },
     possuiSeguro:{
-      type: 'boolean'
+      type: 'number'
     },
     status: {
-      type: 'boolean'
+      type: 'number'
     },
     cidade: {
       type: 'string'
@@ -52,13 +52,13 @@ module.exports = {
       type: 'string'
     },
     avaliacao:{
-      type: 'int'
+      type: 'number'
     },
     cpf: {
       type: 'string'
     },
     numeroDeAvalicoes:{
-      type: 'int'
+      type: 'number'
     }
   },
   primaryKey: 'placa',

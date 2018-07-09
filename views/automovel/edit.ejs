@@ -24,12 +24,12 @@
                 
                     <div class="col-md-4 mb-3">
                       <label for="dataInicio">Data de Início</label>
-                      <input type="date" name="dataInicio" class="form-control" required>
+                      <input id="dataInicio" type="date" name="dataInicio" class="form-control" value="" required>
                     </div>
                 
                     <div class="col-md-4 mb-3">
                       <label for="dataFim">Data de Fim</label>
-                      <input type="date" name="dataFim" class="form-control" required>
+                      <input id="dataFim" type="date" name="dataFim" class="form-control" value="" required>
                     </div>
                     
                     <div class="col-md-4 mb-3">
@@ -44,13 +44,13 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="disponibilidade" <% if (automovel.disponibilidade){ %> checked <% } %>>
+                      <input name="disponibilidade" type="checkbox" class="form-check-input" id="disponibilidade" <%=automovel.disponibilidade? 'checked' : '' %> >
                       <label class="form-check-label" for="disponibilidade">Disponivel</label>
                     </div>
                 </div>
                 <div class="form-row">  
                     <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="possuiSeguro" <% if (automovel.possuiSeguro){ %> checked <% } %>>
+                      <input name="possuiSeguro" type="checkbox" class="form-check-input" id="possuiSeguro" <%=automovel.possuiSeguro? 'checked' : '' %> >
                       <label class="form-check-label" for="possuiSeguro">Possui Seguro?</label>
                     </div>
                 </div>
@@ -69,3 +69,10 @@
     
     <a href="/automovel/list" class="btn btn-outline-light">Voltar aos Automóveis</a>
 </div>
+
+
+<script>
+  
+  document.getElementById("dataInicio").value =`${<%= 1900 + new Date(automovel.dataInicio).getYear()%>}-${("0" + <%=(new Date(automovel.dataInicio).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(automovel.dataInicio).getDate()%>).slice(-2)}`;
+  document.getElementById("dataFim").value =`${<%= 1900 + new Date(automovel.dataFim).getYear()%>}-${("0" + <%=(new Date(automovel.dataFim).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(automovel.dataFim).getDate()%>).slice(-2)}`;
+</script>

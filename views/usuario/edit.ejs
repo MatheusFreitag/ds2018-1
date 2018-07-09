@@ -15,7 +15,7 @@
                 
                     <div class="col-md-4 mb-3">
                       <label for="nascimento">Data de Nascimento</label>
-                      <input type="date" name="nascimento" class="form-control" value="<%= usuario.nascimento %>" required>
+                      <input id="nascimento" type="date" name="nascimento" class="form-control" value="" required>
                     </div>
                 
                     <div class="col-md-4 offset-md-4 mb-3">
@@ -30,7 +30,7 @@
                     
                     <div class="col-md-4 offset-md-4 mb-3">
                       <label for="senha">Senha</label>
-                      <input type="password" name="senha" class="form-control" required>
+                      <input type="password" name="senha" class="form-control" value="<%= usuario.senha%>"required>
                     </div>
                 </div>
               <div class="form-row">
@@ -60,3 +60,8 @@
     
     <a href="/usuario/list" class="btn btn-outline-light">Voltar aos Usuários</a>
 </div>
+
+
+<script>
+  document.getElementById("nascimento").value =`${<%= 1900 + new Date(usuario.nascimento).getYear()%>}-${("0" + <%=(new Date(usuario.nascimento).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(usuario.nascimento).getDate()%>).slice(-2)}`;
+</script>
