@@ -3,8 +3,8 @@
 Este documento serve como guia de estruturação e levantamento da aplicação desenvolvida para a disciplina de Desenvolvimento de Software
 
 ## Tecnologias
-Este trabalho foi desenvolvido com NodeJS, MySQL como banco de dados e [SailsJS](https://0.12.sailsjs.com/) na versão 0.12 como framework para estruturação do modelo MVC.
-Para controle de versionamento do Node, bem como de outros pactores, usamos o ambiente de desenvolvimento em Nuvem [Cloud9](https://aws.amazon.com/pt/cloud9/).
+Este trabalho foi desenvolvido com [NodeJS](https://nodejs.org/en/) na versão v6.11.2, MySQL como banco de dados e [SailsJS](https://0.12.sailsjs.com/) na versão 0.12 como framework para estruturação do modelo MVC.
+Para controle de versionamento do Node, bem como de outros pacotes, usamos o ambiente de desenvolvimento em Nuvem [Cloud9](https://aws.amazon.com/pt/cloud9/).
 ## Estrutura de Arquivos
 Aqui é listada a estrutura de arquivos, com os componentes mais importantes assinalados e descritos com mais detalhes a seguir.
 Usamos o modelo MVC para estruturar o projeto e modularizar o fluxo de execução.
@@ -75,8 +75,8 @@ Arquivo que contém todos os pacotes NPM necessários para rodar a aplicação.
 
 
 ## Inicialização
-1. Instalar o NodeJS
-2. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```javascript npm install ``` para instalar todos os pacotes listados em ```package.json```
+1. Instalar o [NodeJS](https://nodejs.org/en/) na versão v6.11.2
+2. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```npm install ``` para instalar todos os pacotes listados em ```package.json```
 3. Setar as configurações do banco no arquivo ``` config/connections.js ```.
 4. Executar o dump do mysql presente na raiz do repositório para se ter as mesmas tabelas e entradas do projeto e certificar-se que o banco esteja rodando.
 5. Executar o comando ``` sails lift ```
