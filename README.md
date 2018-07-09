@@ -75,11 +75,12 @@ Arquivo que contém todos os pacotes NPM necessários para rodar a aplicação.
 
 
 ## Inicialização
-1. Instalar o [NodeJS](https://nodejs.org/en/) na versão v6.11.2
-2. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```npm install ``` para instalar todos os pacotes listados em ```package.json```
-3. Setar as configurações do banco no arquivo ``` config/connections.js ```.
-4. Executar o dump do mysql presente na raiz do repositório para se ter as mesmas tabelas e entradas do projeto e certificar-se que o banco esteja rodando.
-5. Executar o comando ``` sails lift ```
+1. Instalar o [NodeJS](https://nodejs.org/en/download/releases/) na versão v6.11.2. Pode-se verificar a versão com ```node -v```
+2. Certificar-se que o NPM está na versão 3.10. A versão pode ser verificada com ```npm -v```. Caso não esteja, faça upgrade ou downgrade para esta versão.
+3. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```npm install ``` para instalar todos os pacotes listados em ```package.json```
+4. Setar as configurações do banco no arquivo ``` config/connections.js ```.
+5. Executar o dump do mysql presente na raiz do repositório para se ter as mesmas tabelas e entradas do projeto e certificar-se que o banco esteja rodando.
+6. Executar o comando ``` sails lift ```
 
 
 
