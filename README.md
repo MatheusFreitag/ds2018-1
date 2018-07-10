@@ -48,7 +48,7 @@ Usamos o modelo MVC para estruturar o projeto e modularizar o fluxo de execuçã
 No modelo MVC, o Model e o Controller são encontrados nos respectivos diretórios, e neles são definidos os Schemas e as ações que os Controllers precisam executar
 
 #### config/connections.js
-Aqui é feita a conexão com o banco de dados. Por estarmos usando mysql, precisamos alterar o seguinte trexo de código:
+Aqui é feita a conexão com o banco de dados. Por estarmos usando mysql, precisamos alterar o seguinte trecho de código:
 ```javascript
 mysql: {
     adapter: 'sails-mysql',
@@ -75,12 +75,14 @@ Arquivo que contém todos os pacotes NPM necessários para rodar a aplicação.
 
 
 ## Inicialização
-1. Instalar o [NodeJS](https://nodejs.org/en/download/releases/) na versão v6.11.2. Pode-se verificar a versão com ```node -v```
-2. Certificar-se que o NPM está na versão 3.10. A versão pode ser verificada com ```npm -v```. Caso não esteja, faça upgrade ou downgrade para esta versão.
-3. Após clonar o repositório, executar no Terminal já dentro da raís do projeto o comando ```npm install ``` para instalar todos os pacotes listados em ```package.json```
-4. Setar as configurações do banco no arquivo ``` config/connections.js ```.
-5. Executar o dump do mysql presente na raiz do repositório para se ter as mesmas tabelas e entradas do projeto e certificar-se que o banco esteja rodando.
-6. Executar o comando ``` sails lift ```
-
+1. Instalar o NodeJS.
+2. Clonar Repositório.
+3. Após clonar o repositório, executar no Terminal já dentro da raiz do projeto o comando ```npm install ``` para instalar todos os pacotes listados em ```package.json``` (Pode levar alguns segundos).
+4. Executar o comando ```sudo npm install -g sails@0.12``` (Pode levar alguns segundos).
+5. Instalar e inicializar o mysql (Podem haver variações de como fazer isso dependendo do SO).
+6. Executar o script contido em mysqldump.sql que está presente no projeto (Pode ser via Workbench, Terminal ou onde for mais conveniente).
+7. Setar as configurações do banco no arquivo ``` config/connections.js ``` (Atualizar host, user, root, password e port com os valores pertinentes. Adapter e Database não terão seus valores alterados).
+8. Na raiz do projeto executar o comando ``` sails lift ```.
+9. Abrir a url fornecida no navegador.
 
 
