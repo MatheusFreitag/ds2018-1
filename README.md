@@ -3,7 +3,7 @@
 Este documento serve como guia de estruturação e levantamento da aplicação desenvolvida para a disciplina de Desenvolvimento de Software
 
 ## Tecnologias
-Este trabalho foi desenvolvido com [NodeJS](https://nodejs.org/en/) na versão v6.11.2, MySQL como banco de dados e [SailsJS](https://0.12.sailsjs.com/) na versão 0.12 como framework para estruturação do modelo MVC.
+Este trabalho foi desenvolvido com [NodeJS](https://nodejs.org/en/), MySQL como banco de dados e [SailsJS](https://0.12.sailsjs.com/) na versão 0.12 como framework para estruturação do modelo MVC.
 Para controle de versionamento do Node, bem como de outros pacotes, usamos o ambiente de desenvolvimento em Nuvem [Cloud9](https://aws.amazon.com/pt/cloud9/).
 ## Estrutura de Arquivos
 Aqui é listada a estrutura de arquivos, com os componentes mais importantes assinalados e descritos com mais detalhes a seguir.
