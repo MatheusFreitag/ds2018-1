@@ -135,10 +135,22 @@ label, legend{
 
 
 /* Estilos do cadastrar carro */
+.container-cadatrar-carros {
+    background: #f0f0f0;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 5px;
+}
+
+.container-cadatrar-carros h1 {
+    color: #222;
+}
+.container-cadatrar-carros h1::after {
+    background-color: #222;
+}
+
 #botaoFinalizar{
-    margin-bottom: 5em;
-    position: absolute;
-    right: 0;
+    margin-bottom: 10px;
 }
 
 .dropdown-toggle::after {
