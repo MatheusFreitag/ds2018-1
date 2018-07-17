@@ -1,6 +1,17 @@
 body{
-    background: linear-gradient(0.25turn, #22ccbb, #3a3daf);
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+/*body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: white;
+}*/
 
 h1{
     text-align: center;
@@ -39,4 +50,169 @@ p {
     color: white;
     text-align: center;
     font-size: 14px;
+}
+
+.fa-user{
+    font-size: 1.2em;
+}
+
+#login_nav, #cadastro_nav {
+    color:rgba(255,255,255,1);
+}
+
+#login_nav:hover, #cadastro_nav:hover {
+    color:rgba(255,255,255,1);
+    text-decoration: none;
+}
+
+.bg-light {
+    background-color: #0F2027!important;
+    padding: 1em;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+/* Estilos home */
+
+.container .content{
+    background: #f0f0f0;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#botaoBuscarU, #botaoBuscarC{
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.dropdown-toggle::after {
+    display: None;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+
+#formUsuario{
+    text-align: center;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    color: white;
+    font-weight: 700;
+    background-color: #203A43
+}
+
+.nav-tabs .nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+}
+
+
+label, legend{
+    font-weight: 700;
+}
+
+
+.form-check-label{
+    font-weight: 400;
+}
+
+.header {
+    text-decoration: underline;
+    margin-top: 1em;
+    color: white;
+}
+
+/* Fim do estilo da home*/
+
+
+/* Estilos do cadastrar carro */
+#botaoFinalizar{
+    margin-bottom: 5em;
+    position: absolute;
+    right: 0;
+}
+
+.dropdown-toggle::after {
+    display: None;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+
+#estado-cidade{
+    margin-top:1.2em;
+}
+
+.dragdrop-area {
+    border: 1px dashed #222;
+}
+/* Fim do cadastrar carro */
+
+/* Estilo Listar carros */
+
+.container-list-cars .header {
+    text-align: center;
+}
+
+/* Stars */
+.starrating > input {
+    display: none;
+}  /* Remove radio buttons */
+
+.starrating > label:before { 
+  content: "\f005"; /* Star */
+  display: inline-block; 
+}
+
+.starrating > label{
+  color: gainsboro; /* Start color when not clicked */
+  padding-left: 0.5em;
+}
+
+.starrating > input:checked ~ label{
+    color: gold; 
+}
+
+.reverse { 
+    display: flex; 
+    flex-direction: row-reverse;
+}
+
+.card-car-list {
+    font-weight: 400;
+    color: white;
+}
+
+.card-car-list .card-title {
+    width: 100%;
+}
+
+.card-car-list p {
+    text-align: left;
+}
+
+.card-car-list .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(255,255,255,.125);
+}
+.card-car-list .card-body {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(255,255,255,.125);
+}
+.card-car-list .card-footer {
+    padding: .75rem 1.25rem;
+    border-top: 1px solid rgba(255,255,255,.125);
 }

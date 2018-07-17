@@ -1,63 +1,103 @@
-<h1 class="titulo">Adicionar Novo Usuário</h1>
-
-<div class="container mt-4">
-    <div class="card">
-      <div class="card-body">
-            <form method="post" action="/usuario/create">
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                      <label for="cpf">CPF</label>
-                      <input type="text" name="cpf" class="form-control" placeholder="CPF" required>
-                    </div>
-                    <div class="col-md-4 offset-md-4 mb-3">
-                      <label for="nome">Nome</label>
-                      <input type="text" name="nome" class="form-control" required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="nascimento">Data de Nascimento</label>
-                      <input type="date" name="nascimento" class="form-control" required>
-                    </div>
-                
-                    <div class="col-md-4 offset-md-4 mb-3">
-                      <label for="rg">RG</label>
-                      <input type="text" name="rg" class="form-control" required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="email">Email</label>
-                      <input type="email" name="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="col-md-4 offset-md-4 mb-3">
-                      <label for="senha">Senha</label>
-                      <input type="password" name="senha" class="form-control" required>
-                    </div>
-                </div>
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="endereco">Endereço</label>
-                  <input type="text" name="endereco" class="form-control" placeholder="Endereço" required>
-                </div>
-                <div class="col-md-4 offset-md-4 mb-3">
-                  <label for="telefone">Telefone</label>
-                  <input type="text" name="telefone" class="form-control" placeholder="Telefone" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="cidade">Cidade</label>
-                  <input type="text" name="cidade" class="form-control" placeholder="Cidade" required>
-                </div>
-                <div class="col-md-4 offset-md-4 mb-3">
-                  <label for="estado">Estado</label>
-                  <input type="text" name="estado" class="form-control" placeholder="Estado" required>
-                </div>
-              </div>
-              <input class="btn btn-primary"  type="submit" value="Adicionar">
-            </form>
-        </div>
+<div class="container content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header">
+        <h1>Cadastrar Usuário</h1>
+      </div>
     </div>
-    
-    <a href="/usuario/list" class="voltar btn btn-outline-light">Voltar aos Usuários</a>
+  </div>
+
+  <form method="post" action="/usuario/create">
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-1">
+        <label for="inputName">Nome Completo</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Obrigatório*">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputCPF">CPF</label>
+        <input type="text" class="form-control" id="inputCPF" placeholder="Obrigatório*" size="11">
+      </div>
+      <div class="form-group col-md-4 offset-md-2">
+        <label for="inputRG">RG</label>
+        <input type="text" class="form-control " id="inputRG" placeholder="Obrigatório*">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputSexo">Sexo</label>
+        <select id="inputSexo" class="form-control">
+          <option selected>Feminino</option>
+          <option>Masculino</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 offset-md-2">
+        <label for="inputNascimento">Data de Nascimento</label>
+        <input class="form-control" id="date" name="date" placeholder="dia/mes/ano" type="text"/>
+
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-1">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Obrigatório*">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-1">
+        <label for="inputEndereco">Endereço</label>
+        <input type="text" class="form-control" id="inputEndereco" placeholder="Obrigatório*">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputEstado">Estado</label>
+        <select id = "inputEstado" name="estados-brasil" class="form-control">
+          <option value=""></option>
+        </select> 
+      </div>
+      <div class="form-group col-md-4 offset-md-2">
+        <label for="inputCidade">Cidade</label>
+        <select id = "inputCidade" name="cidades-estado" class="form-control">
+        </select> 
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputTelefone">Telefone</label>
+        <input class="form-control" id="inputTelefone" placeholder="Obrigatório*" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputSenha">Senha</label>
+        <input type="password" class="form-control" id="inputSenha" placeholder="Obrigatório*">
+      </div>
+      <div class="form-group col-md-4 offset-md-2">
+        <label for="inputConfSenha">Confirmar Senha</label>
+        <input type="password" class="form-control " id="inputConfSenha" placeholder="Obrigatório*">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-4 offset-md-1">
+        <input type="checkbox" class="form-check-input" id="termoUso" checked>
+        <label class="form-check-label" for="termoUso"> Concordo com os termos de uso</label>
+      </div>
+    </div>
+
+    <div class= "form-row ">
+      <div class= "col-md-11 d-flex flex-row-reverse">
+        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Salvar Alterações </button> 
+      </div>
+    </div>
+  </form>
 </div>
