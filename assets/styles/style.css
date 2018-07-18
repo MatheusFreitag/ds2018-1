@@ -16,7 +16,7 @@ html {
 h1{
     text-align: center;
     color: white;
-    margin-top: 10px;
+    margin-top: 10px; 
 }
 
 h1 a {
@@ -78,6 +78,10 @@ p {
     display: block;
 }
 
+.container {
+    border-radius: 5px;
+}
+
 /* Estilos home */
 
 .container .content{
@@ -126,7 +130,6 @@ label, legend{
 }
 
 .header {
-    text-decoration: underline;
     margin-top: 1em;
     color: white;
 }
@@ -139,7 +142,6 @@ label, legend{
     background: #f0f0f0;
     margin-top: 2em;
     margin-bottom: 2em;
-    border-radius: 5px;
 }
 
 .container-cadatrar-carros h1 {
@@ -168,6 +170,7 @@ label, legend{
 
 .dragdrop-area {
     border: 1px dashed #222;
+    margin-bottom: 20px;
 }
 /* Fim do cadastrar carro */
 
@@ -227,4 +230,35 @@ label, legend{
 .card-car-list .card-footer {
     padding: .75rem 1.25rem;
     border-top: 1px solid rgba(255,255,255,.125);
+}
+
+/* Fim Estilos do listar carros */
+
+/* Estilo detalhes do carro */
+
+.container-detalhes-carro label,
+.container-detalhes-carro span {
+    color: #fff;
+}
+
+@media (min-width: 769px) {
+    .form-row{
+        /*text-align: right;*/
+    }
+
+    .form-group.divstar.starrating{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Fim estilos detalhes */
+
+/* Estilos Usuários */
+
+.container-adicionar-usuario {
+    background-color: #f0f0f0;
+}
+.container-adicionar-usuario h1 {
+    color: #222;
 }
