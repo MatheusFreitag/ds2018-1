@@ -21,11 +21,14 @@ module.exports = {
     rg:{
       type: 'boolean'
     },
+    sexo:{
+      type: 'string'
+    },
     email:{
       type: 'string'
     },
     senha:{
-      type: 'boolean'
+      type: 'string'
     },
     foto:{
       type: 'string'

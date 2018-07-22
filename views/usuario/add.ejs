@@ -11,32 +11,32 @@
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-1">
         <label for="inputName">Nome Completo</label>
-        <input type="text" class="form-control" id="inputName" placeholder="Obrigatório*">
+        <input type="text" class="form-control" id="inputName" name="nome" placeholder="Obrigatório*">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4 offset-md-1">
         <label for="inputCPF">CPF</label>
-        <input type="text" class="form-control" id="inputCPF" placeholder="Obrigatório*" size="11">
+        <input type="text" class="form-control" id="inputCPF" name="cpf" placeholder="Obrigatório*" size="11">
       </div>
       <div class="form-group col-md-4 offset-md-2">
         <label for="inputRG">RG</label>
-        <input type="text" class="form-control " id="inputRG" placeholder="Obrigatório*">
+        <input type="text" class="form-control " id="inputRG" name="rg" placeholder="Obrigatório*">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4 offset-md-1">
         <label for="inputSexo">Sexo</label>
-        <select id="inputSexo" class="form-control">
-          <option selected>Feminino</option>
-          <option>Masculino</option>
+        <select id="inputSexo" class="form-control" name="sexo">
+          <option selected value="F">Feminino</option>
+          <option value="M">Masculino</option>
         </select>
       </div>
       <div class="form-group col-md-4 offset-md-2">
         <label for="inputNascimento">Data de Nascimento</label>
-        <input class="form-control" id="date" name="date" placeholder="dia/mes/ano" type="text"/>
+        <input class="form-control" id="date" name="nascimento" placeholder="dia/mes/ano" type="text"/>
 
       </div>
     </div>
@@ -44,42 +44,42 @@
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-1">
         <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Obrigatório*">
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Obrigatório*">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-1">
         <label for="inputEndereco">Endereço</label>
-        <input type="text" class="form-control" id="inputEndereco" placeholder="Obrigatório*">
+        <input type="text" class="form-control" id="inputEndereco" name="endereco" placeholder="Obrigatório*">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4 offset-md-1">
         <label for="inputEstado">Estado</label>
-        <select id = "inputEstado" name="estados-brasil" class="form-control">
+        <select id = "inputEstado" name="estado" class="form-control">
           <option value=""></option>
-        </select> 
+        </select>
       </div>
       <div class="form-group col-md-4 offset-md-2">
         <label for="inputCidade">Cidade</label>
-        <select id = "inputCidade" name="cidades-estado" class="form-control">
-        </select> 
+        <select id = "inputCidade" name="cidade" class="form-control">
+        </select>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4 offset-md-1">
         <label for="inputTelefone">Telefone</label>
-        <input class="form-control" id="inputTelefone" placeholder="Obrigatório*" type="text"/>
+        <input class="form-control" id="inputTelefone" name="telefone" placeholder="Obrigatório*" type="text"/>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4 offset-md-1">
         <label for="inputSenha">Senha</label>
-        <input type="password" class="form-control" id="inputSenha" placeholder="Obrigatório*">
+        <input type="password" class="form-control" id="inputSenha" name="senha" placeholder="Obrigatório*">
       </div>
       <div class="form-group col-md-4 offset-md-2">
         <label for="inputConfSenha">Confirmar Senha</label>
@@ -104,7 +104,7 @@
 
     <div class= "form-row ">
       <div class= "col-md-11 d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Salvar Alterações </button> 
+        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Salvar Alterações </button>
       </div>
     </div>
   </form>

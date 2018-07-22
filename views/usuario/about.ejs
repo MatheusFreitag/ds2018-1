@@ -1,63 +1,49 @@
-<h1 class="titulo"><%= usuario.nome %></h1>
-<div class="container mt-4">
-    <div class="card">
-      <div class="card-body">
-            <form method="post" action="/usuario/create">
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                      <label for="cpf">CPF</label>
-                      <input type="text" name="cpf" class="form-control" value=<%=usuario.cpf%> required>
-                    </div>
-                    <div class="col-md-4 offset-md-4 mb-3">
-                      <label for="nome">Nome</label>
-                      <input type="text" name="nome" class="form-control" value=<%= usuario.nome %> required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="nascimento">Data de Nascimento</label>
-                      <input id="nascimento" type="date" name="nascimento" class="form-control"  value="" required>
-                    </div>
-                    <div class="col-md-4 offset-md-4 mb-3">
-                      <label for="rg">RG</label>
-                      <input type="text" name="rg" class="form-control" value=<%= usuario.rg %> required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="email">Email</label>
-                      <input type="email" name="email" class="form-control" value=<%= usuario.email %> required>
-                    </div>
-                    
-                </div>
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="endereco">Endereço</label>
-                  <input type="text" name="endereco" class="form-control" value=<%= usuario.endereco %> required>
-                </div>
-                <div class="col-md-4 offset-md-4 mb-3">
-                  <label for="telefone">Telefone</label>
-                  <input type="text" name="telefone" class="form-control" value=<%= usuario.telefone %> required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="cidade">Cidade</label>
-                  <input type="text" name="cidade" class="form-control" value=<%= usuario.cidade %> required>
-                </div>
-                <div class="col-md-4 offset-md-4 mb-3">
-                  <label for="estado">Estado</label>
-                  <input type="text" name="estado" class="form-control" value=<%= usuario.estado %> required>
-                </div>
-              </div>
-            </form>
-        </div>
+<div class="container">
+  <img src="<%=usuario.foto%>" class="rounded mx-auto d-block" alt="Responsive image">
+
+  <div class="form-row">
+    <div class="col-md-8 offset-md-1">
+      <label for="inputUserName"><%=usuario.nome%></label>
     </div>
-    
-    <a href="/usuario/list" class="btn btn-outline-light">Voltar aos Usuários</a>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group reverse starrating offset-md-2">
+      <input type="radio" id="star5_preco" name="preco" value="5" onclick="javascript: return false;" /><label class="fas fa-star" for="star5_preco" title="5 estrelas"></label>
+      <input type="radio" id="star4_preco" name="preco" value="4" /><label class="fas fa-star" for="star4_preco" title="4 estrelas"></label>
+      <input type="radio" id="star3_preco" name="preco" value="3" /><label class="fas fa-star" for="star3_preco" title="3 estrelas"></label>
+      <input type="radio" id="star2_preco" name="preco" value="2" /><label class="fas fa-star" for="star2_preco" title="2 estrelas"></label>
+      <input type="radio" id="star1_preco" name="preco" value="1" /><label class="fas fa-star" for="star1_preco" title="1 estrela"></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4 offset-md-4">
+      <label for="inputCidade"><%=usuario.cidade%>, <%=usuario.estado%></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4 offset-md-1">
+      <label for="inputContato">Contato</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4 offset-md-2">
+      <label for="inputEmail">Email: usuario<%=usuario.email%></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4 offset-md-2">
+      <label for="inputTelefone">Telefone: <%=usuario.telefone%></label>
+    </div>
+  </div>
+
+  <div class= "form-row">
+    <div class= "col-6 col-md-2 offset-md-1">
+      <button type="submit" class="btn btn-info" id="botaoCarros_User"> Carros Disponíveis </button>
+    </div>
+  </div>
 </div>
-
-<script>
-  document.getElementById("nascimento").value =`${<%= 1900 + new Date(usuario.nascimento).getYear()%>}-${("0" + <%=(new Date(usuario.nascimento).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(usuario.nascimento).getDate()%>).slice(-2)}`;
-  //document.getElementById("nascimento").value = "2014-2-9"; 
-</script>
-
-
