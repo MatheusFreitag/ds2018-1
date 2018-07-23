@@ -10,28 +10,28 @@
   <form method="post" action="/automovel/create">
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-1">
-        <label for="inputTitulo">Titulo</label>
-        <input type="text" class="form-control" id="inputTitulo" placeholder="Adicione um título para identificar seus carros">
+        <label for="titulo">Titulo</label>
+        <input type="text" class="form-control" id="inputTitulo" name="Titulo" placeholder="Adicione um título para identificar seus carros">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-3 offset-md-1">
-        <label for="inputMarca">Marca</label>
+        <label for="Marca">Marca</label>
         <select id="inputMarca" name="Marca" class="form-control">
 
         </select> 
 
       </div>
       <div class="form-group col-md-4 offset-md-1">
-        <label for="inputModelo">Modelo</label>
+        <label for="Modelo">Modelo</label>
         <select id="inputModelo" name="Modelo" class="form-control">
 
         </select> 
       </div>
 
       <div class="form-group col-md-1 offset-md-1">
-        <label for="inputAno">Ano</label>
+        <label for="Ano">Ano</label>
         <input type="text" class="form-control" name="Ano" id="inputAno" placeholder="Ano do Veículo">
         <!--<select id = "inputAno" name="ano" class="form-control">-->
         <!--  <option value=""></option>-->
@@ -45,7 +45,7 @@
       <div class="form-group col-md-2 offset-md-1">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Cambio" id="cambio_manual" value="manual">
-          <label class="form-check-label" for="cambio_manual">
+          <label class="form-check-label" for="Cambio">
             Manual
           </label>
         </div>
@@ -54,7 +54,7 @@
       <div class="form-group col-md-2 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Cambio" id="cambio_automatico" value="automatico">
-          <label class="form-check-label" for="cambio_automatico">
+          <label class="form-check-label" for="Cambio">
             Automático
           </label>
         </div>
@@ -63,7 +63,7 @@
       <div class="form-group col-md-3 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Cambio" id="cambio_semiautomatico" value="semiautomatico">
-          <label class="form-check-label" for="cambio_semiautomatico">
+          <label class="form-check-label" for="Cambio">
             Semi-Automático
           </label>
         </div>
@@ -77,7 +77,7 @@
       <div class="form-group col-md-2 offset-md-1">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Combustivel" id="gasolina" value="gasolina">
-          <label class="form-check-label" for="gasolina">
+          <label class="form-check-label" for="Combustivel">
             Gasolina
           </label>
         </div>
@@ -86,7 +86,7 @@
       <div class="form-group col-md-2 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Combustivel" id="alcool" value="alcool">
-          <label class="form-check-label" for="alcool">
+          <label class="form-check-label" for="Combustivel">
             Álcool
           </label>
         </div>
@@ -95,7 +95,7 @@
       <div class="form-group col-md-2 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Combustivel" id="flex" value="flex">
-          <label class="form-check-label" for="flex">
+          <label class="form-check-label" for="Combustivel">
             Flex
           </label>
         </div>
@@ -103,7 +103,7 @@
       <div class="form-group col-md-2 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Combustivel" id="gas_natural" value="gas_natural">
-          <label class="form-check-label" for="gas_natural">
+          <label class="form-check-label" for="Combustivel">
             Gás Natural
           </label>
         </div>
@@ -112,7 +112,7 @@
       <div class="form-group col-md-2 ">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="Combustivel" id="diesel" value="diesel">
-          <label class="form-check-label" for="diesel">
+          <label class="form-check-label" for="Combustivel">
             Diesel
           </label>
         </div>
