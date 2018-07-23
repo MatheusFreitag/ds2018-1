@@ -1,78 +1,370 @@
-<h1 class="titulo">Adicionar Novo Automóvel</h1>
-
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-body">
-            <form method="post" action="/automovel/update">
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                      <label for="placa">Placa</label>
-                      <input type="text" name="placa" class="form-control" value="<%=automovel.placa%>" required>
-                    </div>
-                    <div class="col-md-4  mb-3">
-                      <label for="modelo">Modelo</label>
-                      <input type="text" name="modelo" class="form-control" value="<%=automovel.modelo%>" required>
-                    </div>
-                    <div class="col-md-4  mb-3">
-                      <label for="cor">Cor</label>
-                      <input type="text" name="cor" class="form-control" value="<%=automovel.cor%>" required>
-                    </div>
-                    <div class="col-md-4  mb-3">
-                      <label for="chassi">Chassi</label>
-                      <input type="text" name="chassi" class="form-control" value="<%=automovel.chassi%>" required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="dataInicio">Data de Início</label>
-                      <input id="dataInicio" type="date" name="dataInicio" class="form-control" value="" required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="dataFim">Data de Fim</label>
-                      <input id="dataFim" type="date" name="dataFim" class="form-control" value="" required>
-                    </div>
-                    
-                    <div class="col-md-4 mb-3">
-                      <label for="cidade">Cidade</label>
-                      <input type="text" name="cidade" class="form-control" value="<%=automovel.cidade%>" required>
-                    </div>
-                
-                    <div class="col-md-4 mb-3">
-                      <label for="estado">Estado</label>
-                      <input type="text" name="estado" class="form-control" value="<%=automovel.estado%>" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group form-check">
-                      <input name="disponibilidade" type="checkbox" class="form-check-input" id="disponibilidade" <%=automovel.disponibilidade? 'checked' : '' %> >
-                      <label class="form-check-label" for="disponibilidade">Disponivel</label>
-                    </div>
-                </div>
-                <div class="form-row">  
-                    <div class="form-group form-check">
-                      <input name="possuiSeguro" type="checkbox" class="form-check-input" id="possuiSeguro" <%=automovel.possuiSeguro? 'checked' : '' %> >
-                      <label class="form-check-label" for="possuiSeguro">Possui Seguro?</label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                      <label for="descricao">Descrição</label>
-                      <textarea name="descricao" rows="8" cols="80">
-                          <%= automovel.descricao %>
-                      </textarea>
-                    </div>
-                </div>
-                <input class="btn btn-primary"  type="submit" value="Salvar">
-            </form>
-        </div>
+<div class="container container-cadatrar-carros">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header">
+        <h1>Cadastrar Carro</h1>
+      </div>
     </div>
-    
-    <a href="/automovel/list" class="btn btn-outline-light">Voltar aos Automóveis</a>
+  </div>
+
+  <form method="post" action="/automovel/update">
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-1">
+        <label for="inputTitulo">Título</label>
+        <input type="text" class="form-control" id="inputTitulo" value='<%= automovel.Titulo%>'>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 offset-md-1">
+        <label for="inputMarca">Marca</label>
+        <select id="inputMarca" name="Marca" class="form-control">
+          <option value="<%= automovel.Marca %>"><%= automovel.Marca %></option>
+        </select> 
+
+      </div>
+      <div class="form-group col-md-4 offset-md-1">
+        <label for="inputModelo">Modelo</label>
+        <select id="inputModelo" name="Modelo" class="form-control">
+          <option value="<%= automovel.Modelo %>"><%= automovel.Modelo %></option>
+        </select> 
+      </div>
+
+      <div class="form-group col-md-1 offset-md-1">
+        <label for="inputAno">Ano</label>
+        <input type="text" class="form-control" name="Ano" id="inputAno" value='<%= automovel.Ano%>' >
+        <!--<select id = "inputAno" name="ano" class="form-control">-->
+        <!--  <option value=""></option>-->
+        <!--</select> -->
+      </div>
+    </div>
+
+    <div class="form-row">
+      <legend class="col-form-label col-md-11 offset-md-1 pt-0">Câmbio</legend>
+
+      <div class="form-group col-md-2 offset-md-1">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Cambio" id="cambio_manual" value="manual" <% if (automovel.Cambio == 'manual'){ %> checked <% } %>>
+          <label class="form-check-label" for="Cambio">
+            Manual
+          </label>
+        </div>
+
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Cambio" id="cambio_automatico" value="automatico" <% if (automovel.Cambio == 'automatico'){ %> checked <% } %>>
+          <label class="form-check-label" for="Cambio">
+            Automático
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group col-md-3 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Cambio" id="cambio_semiautomatico" value="semiautomatico" <% if (automovel.Cambio == 'semiautomatico'){ %> checked <% } %>>
+          <label class="form-check-label" for="Cambio">
+            Semi-Automático
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <legend class="col-form-label col-md-11 offset-md-1 pt-0">Combustível</legend>
+
+      <div class="form-group col-md-2 offset-md-1">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Combustivel" id="gasolina" value="gasolina" <% if (automovel.Combustivel == 'gasolina'){ %> checked <% } %>>
+          <label class="form-check-label" for="gasolina">
+            Gasolina
+          </label>
+        </div>
+
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Combustivel" id="alcool" value="alcool" <% if (automovel.Combustivel == 'alcool'){ %> checked <% } %>>
+          <label class="form-check-label" for="alcool">
+            Álcool
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Combustivel" id="flex" value="flex" <% if (automovel.Combustivel == 'flex'){ %> checked <% } %>>
+          <label class="form-check-label" for="flex">
+            Flex
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Combustivel" id="gas_natural" value="gas_natural" <% if (automovel.Combustivel == 'gas_natural'){ %> checked <% } %>>
+          <label class="form-check-label" for="gas_natural">
+            Gás Natural
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Combustivel" id="diesel" value="diesel" <% if (automovel.Combustivel == 'diesel'){ %> checked <% } %>>
+          <label class="form-check-label" for="diesel">
+            Diesel
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <legend class="col-form-label col-md-11 offset-md-1 pt-0">Direção</legend>
+
+      <div class="form-group col-md-2 offset-md-1">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Direcao" id="hidraulica" value="hidraulica" <% if (automovel.Direcao == 'hidraulica'){ %> checked <% } %>>
+          <label class="form-check-label" for="hidraulica">
+            Hidráulica
+          </label>
+        </div>
+
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Direcao" id="eletrica" value="eletrica" <% if (automovel.Direcao == 'eletrica'){ %> checked <% } %>>
+          <label class="form-check-label" for="eletrica">
+            Elétrica
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Direcao" id="mecanica" value="mecanica" <% if (automovel.Direcao == 'mecanica'){ %> checked <% } %>>
+          <label class="form-check-label" for="mecanica">
+            Mecânica
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-2 ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="Direcao" id="assistida" value="assistida" <% if (automovel.Direcao == 'assistida'){ %> checked <% } %>>
+          <label class="form-check-label" for="assistida">
+            Assistida
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-lg-2 offset-lg-1 col-md-3 offset-md-1">
+        <label for="inputPotencia">Potência do motor</label>
+        <select id = "inputPotencia" name="Potencia" class="form-control">
+          <option value="1.0">1.0</option>
+          <option value="1.2">1.2</option>
+          <option value="1.3">1.3</option>
+          <option value="1.4">1.4</option>
+          <option value="1.5">1.5</option>
+          <option value="1.6">1.6</option>
+          <option value="1.7">1.7</option>
+          <option value="1.8">1.8</option>
+          <option value="1.9">1.9</option>
+          <option value="2.0-2.9">2.0 - 2.9</option>
+          <option value="3.0-3.9">3.0 - 3.9</option>
+          <option value="4.0+">4.0 ou mais</option>
+        </select> 
+
+      </div>
+
+      <div class="form-group col-md-2 offset-md-1">
+        <label for="inputTipoVeic">Tipo de veículo</label>
+        <select id = "inputTipoVeic" name="tipoVeiculo" class="form-control">
+          <option value="Hatch">Hatch</option>
+          <option value="Sedã">Sedã</option>
+          <option value="SUV">SUV</option>
+          <option value="Van-Utilitario">Van/Utilitário</option>
+          <option value="Conversivel">Conversível</option>
+          <option value="Pick-up">Pick-up</option>
+          <option value="Antigo">Antigo</option>
+          <option value="Buggy">Buggy</option>
+          <option value="Passeio">Passeio</option>
+        </select> 
+
+      </div>
+
+      <div class="form-group col-lg-1 offset-lg-1 col-md-2">
+        <label for="inputPortas">Portas</label>
+        <select id = "inputPortas" name="numPortas" class="form-control">
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select> 
+      </div>
+
+      <div class="form-group col-md-2 offset-lg-1">
+        <label for="inputTipoVeic">Cor</label>
+        <select id = "inputTipoVeic" name="corVeiculo" class="form-control">
+          <option value="Preto">Preto</option>
+          <option value="Branco">Branco</option>
+          <option value="Prata">Prata</option>
+          <option value="Vermelho">VermelPortasho</option>
+          <option value="Cinza">Cinza</option>
+          <option value="Azul">Azul</option>
+          <option value="Amarelo">Amarelo</option>
+          <option value="Verde">Verde</option>
+          <option value="Laranja">Laranja</option>
+          <option value="Outra">Outra</option>
+        </select> 
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 offset-md-1">
+        <label for="inputPlaca">Placa</label>
+        <input type="text" class="form-control" id="inputPlaca" name="Placa" value='<%= automovel.Placa %>'>
+      </div>
+      <div class="form-group col-md-6 offset-md-1 col-lg-5 offset-lg-2">
+        <label for="inputChassi">Chassi</label>
+        <input type="text" class="form-control" id="inputChassi" name="Chassi" value='<%= automovel.Chassi %>'>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <legend class="col-form-label col-md-11 offset-md-1 pt-0">Opcionais</legend>
+      <div class="form-check form-check-inline  col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="airBag" name="AirBag" <% if (automovel.AirBag == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="airBag">Air bag</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-check form-check-inline col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="arCondicionado" name="ArCondicionado" <% if (automovel.ArCondicionado == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="arCondicionado">Ar condicionado</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-check form-check-inline col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="alarme" name="Alarme" <% if (automovel.Alarme == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="alarme">Alarme</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="travaEletrica" name="travaEletrica" <% if (automovel.TravaEletrica == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="travaEletrica">Trava elétrica</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="som" name="Som" <% if (automovel.Som == '1'){ %> checked <% } %>'>
+        <label class="form-check-label" for="Som">Som</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="vidroEletrico" name="vidroEletrico" <% if (automovel.VidroEletrico == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="vidroEletrico">Vidro elétrica</label>
+      </div>
+    </div>  
+
+    <div class="form-row">
+      <div class="form-check form-check-inline col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="Blindado" <% if (automovel.Blindado == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="inlineCheckbox1">Blindado</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="sensorRe" name="sensorRe" <% if (automovel.SensorRe == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="sensorRe">Sensor de ré</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="cameraRe" name="cameraRe" <% if (automovel.CameraRe == '1'){ %> checked <% } %>>
+        <label class="form-check-label" for="cameraRe">Câmera de ré</label>
+      </div>
+    </div>
+
+    <div class="form-row" id="estado-cidade" >
+      <div class="form-group col-md-4 offset-md-1" >
+        <label for="inputEstado">Estado</label>
+        <select id = "inputEstado" name="estadosBrasil" class="form-control">
+          <option value="<%= automovel.Estado %>"><%= automovel.Estado %></option>
+        </select> 
+      </div>
+      <div class="form-group col-md-4 offset-md-2">
+        <label for="inputCidade">Cidade</label>
+        <select id = "inputCidade" name="cidadesEstado" class="form-control">
+          <option value="<%= automovel.Cidade %>"><%= automovel.Cidade %></option>
+        </select> 
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6 offset-md-1">
+        <label for="descricao">Descrição do veículo</label>
+        <textarea class="form-control" id="inputDescricao" name="Descricao" rows="3">
+          <%= automovel.Descricao %>
+        </textarea>
+      </div>
+      <div class="form-group col-md-3 offset-md-1">
+        <label for="precoDiaria">Preço da diária</label>
+        <input type="textArea" class="form-control" name="precoDiaria" id="inputDiaria" value='<%= automovel.PrecoDiaria %>'>
+      </div>
+    </div>
+
+    <div class="form-row dragdrop-area">
+      <div class="form-group offset-md-1">
+        <label for="documentacao">Documentação</label>
+        <input type="file" name="documentacao" class="form-control-file" id="fotoDocumento">
+        <span>Ou arraste e solte um documento na área pontilhada.</span>
+      </div>
+    </div>
+
+    <div class="form-row dragdrop-area ">
+        <div class="form-group offset-md-1">
+          <label for="FotoFrente">Foto de frente do veículo</label>
+          <input type="file" name="file" class="form-control-file" id="FotoFrente">
+          <span>Ou arraste e solte uma foto na área pontilhada.</span>
+        </div>
+      </div>
+
+      <div class="form-row dragdrop-area ">
+        <div class="form-group offset-md-1">
+          <label for="FotoInterior">Foto do interior do veículo</label>
+          <input type="file" name="file" class="form-control-file" id="FotoInterior">
+          <span>Ou arraste e solte uma foto na área pontilhada.</span>
+        </div>
+      </div>
+
+      <div class="form-row dragdrop-area ">
+        <div class="form-group offset-md-1">
+          <label for="FotoTraseira">Foto da traseira do veículo</label>
+          <input type="file" name="file" class="form-control-file" id="FotoTraseira">
+          <span>Ou arraste e solte uma foto na área pontilhada.</span>
+        </div>
+      </div>
+
+    <div class="form-row">
+      <div class="form-check form-check-inline  col-md-4 offset-md-1">
+        <input type="checkbox" class="form-check-input" id="termoUso" checked>
+        <label class="form-check-label" for="termoUso"> Concordo com os termos de uso</label>
+      </div>
+    </div>
+
+    <div class= "form-row">
+      <div class= "col-md-3 offset-md-8">
+        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Finalizar </button> 
+      </div>
+    </div>
+  </form>
 </div>
-
-
-<script>
-  
-  document.getElementById("dataInicio").value =`${<%= 1900 + new Date(automovel.dataInicio).getYear()%>}-${("0" + <%=(new Date(automovel.dataInicio).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(automovel.dataInicio).getDate()%>).slice(-2)}`;
-  document.getElementById("dataFim").value =`${<%= 1900 + new Date(automovel.dataFim).getYear()%>}-${("0" + <%=(new Date(automovel.dataFim).getMonth() + 1)%>).slice(-2)}-${("0" + <%=new Date(automovel.dataFim).getDate()%>).slice(-2)}`;
-</script>
