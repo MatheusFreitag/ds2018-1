@@ -2,7 +2,7 @@
   <div class="row pb-5">
     <div class="col-lg-12">
       <div class="header">
-        <h3><label for="inputTitulo"><%=automovel.titulo%></label></h3>
+        <h3><label for="inputTitulo"><%=automovel.Titulo%></label></h3>
       </div>
     </div>
   </div>
@@ -12,66 +12,66 @@
       <div class="col-md-7 col-sm-6 offset-md-1">
         <div class="form-group ">
           <label for="inputMarca">Marca:</label>
-          <span><%=automovel.marca%></span>
+          <span><%=automovel.Marca%></span>
         </div>
         <div class="form-group ">
           <label for="inputModelo">Modelo:</label>
-          <span><%=automovel.modelo%></span>
+          <span><%=automovel.Modelo%></span>
         </div>
 
         <div class="row">
           <div class="form-group col-lg-2 col-md-12">
             <label for="inputAno">Ano:</label>
-            <span><%=automovel.ano%></span>
+            <span><%=automovel.Ano%></span>
           </div>
           <div class="form-group col-lg-4 col-md-12 offset-lg-1">
             <label for="inputCambio">Câmbio:</label>
-            <span><%=automovel.cambio%></span>
+            <span><%=automovel.Cambio%></span>
           </div>
         </div>
 
         <div class="form-group">
           <label for="inputDirecao">Direção:</label>
-          <span><%=automovel.direcao%></span>
+          <span><%=automovel.Direcao%></span>
         </div>
         <div class="form-group">
           <label for="inputPotênciaMotor">Potência do Motor:</label>
-          <span><%=automovel.motor%></span>
+          <span><%=automovel.PotenciaMotor%></span>
         </div>
         <div class="form-group">
           <label for="inputTipoVeiculo">Tipo de Veículo:</label>
-          <span><%=automovel.tipo%></span>
+          <span><%=automovel.Tipo%></span>
         </div>
         <div class="row">
           <div class="form-group col-lg-2 col-md-12">
             <label for="inputPortas">Portas:</label>
-            <span><%=automovel.portas%></span>
+            <span><%=automovel.Portas%></span>
           </div>
           <div class="form-group col-lg-2 col-md-12 offset-lg-1">
             <label for="inputCor">Cor:</label>
-            <span><%=automovel.cor%></span>
+            <span><%=automovel.Cor%></span>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-lg-9">
             <label for="inputModelo">Descrição:</label>
-            <span><%=automovel.descricao%></span>
+            <span><%=automovel.Descricao%></span>
           </div>
         </div>
         <div class="form-group">
           <label for="inputPreço">Preço diária:</label>
-          <span> R$ <%=automovel.preco%></span>
+          <span> R$<%=automovel.PrecoDiaria%></span>
         </div>
         <div class="form-group">
           <label for="inputLocalizacao">Localização:</label>
-          <span> <%=automovel.cidade%>, <%=automovel.estado%></span>
+          <span> <%=automovel.Cidade%>, <%=automovel.Estado%></span>
         </div>
         <div class="row">
           <div class="form-group col-lg-2 col-md-12">
             <label for="inputLocatário">Locatário:</label>
           </div>
           <div class="form-group col-lg-2 col-md-12 offset-lg-1">
-            <button type="button" class="btn btn-secondary">Ver Perfil</button>
+            <a href="/usuario/about/<%=automovel.CPF%>"><button type="button" class="btn btn-secondary">Ver Perfil</button></a>
 
           </div>
         </div>
@@ -81,7 +81,7 @@
         <div class="row d-flex justify-content-left" >
 
           <div class="card bg-light ml-3 mr-3" >
-            <img class="card-img-top" src="<%=automovel.fotoFrente%>" class="rounded" alt="Card image cap">
+            <img class="card-img-top" src="/<%=automovel.FotoVeiculoFrente%>" class="rounded" alt="Card image cap">
             <div class="card-body d-flex justify-content-center">
               <div class="row center divstar">
                 <div class="form-group divstar   starrating ">
@@ -105,50 +105,50 @@
 
         <div class="row justify-content-left">
           <div class="form-group col-lg-4 col-md-12 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="airBag" value="airBag">
+            <input class="form-check-input" type="checkbox" id="airBag" value="airBag" <% if (automovel.AirBag){ %> checked <% } %> >
             <label class="form-check-label" for="airBag">Air bag</label>
           </div>
           <div class="form-group  col-lg-6 col-md-12 form-check form-check-inline ">
-            <input class="form-check-input" type="checkbox" id="arCondicionado" value="arCondicionado">
+            <input class="form-check-input" type="checkbox" id="arCondicionado" value="arCondicionado" <% if (automovel.ArCondicionado){ %> checked <% } %> >
             <label class="form-check-label" for="arCondicionado">Ar condicionado</label>
           </div>
         </div>
         <div class="row justify-content-left">
           <div class="form-group col-lg-3 col-md-12 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="alarme" value="alarme">
+            <input class="form-check-input" type="checkbox" id="alarme" value="alarme" <% if (automovel.Alarme){ %> checked <% } %> >
             <label class="form-check-label" for="alarme">Alarme</label>
           </div>
           <div class="form-group  col-lg-6 col-md-12 form-check form-check-inline offset-lg-1">
-            <input class="form-check-input" type="checkbox" id="travaEletrica" value="travaEletrica">
+            <input class="form-check-input" type="checkbox" id="travaEletrica" value="travaEletrica" <% if (automovel.TravaEletrica){ %> checked <% } %> >
             <label class="form-check-label" for="travaEletrica">Trava elétrica</label>
           </div>
         </div>
 
         <div class="row d-flex justify-content-left">
           <div class="form-group col-lg-3 col-md-12  form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="som" value="som">
+            <input class="form-check-input" type="checkbox" id="som" value="som" <% if (automovel.Som){ %> checked <% } %>>
             <label class="form-check-label" for="som">Som</label>
           </div>
           <div class=" form-group col-lg-6 col-md-12 form-check form-check-inline offset-lg-1">
-            <input class="form-check-input" type="checkbox" id="vidroEletrico" value="vidroEletrico">
+            <input class="form-check-input" type="checkbox" id="vidroEletrico" value="vidroEletrico" <% if (automovel.VidroEletrico){ %> checked <% } %>>
             <label class="form-check-label" for="vidroEletrico">Vidro elétrica</label>
           </div>
         </div>
 
         <div class="row justify-content-left">
           <div class="form-group col-lg-3 col-md-12 form-check form-check-inline ">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" <% if (automovel.Blindado){ %> checked <% } %>>
             <label class="form-check-label" for="inlineCheckbox1">Blindado</label>
           </div>
           <div class="form-group col-lg-6 col-md-12 form-check form-check-inline offset-lg-1">
-            <input class="form-check-input" type="checkbox" id="sensorRe" value="sensorRe">
+            <input class="form-check-input" type="checkbox" id="sensorRe" value="sensorRe" <% if (automovel.SensorRe){ %> checked <% } %>>
             <label class="form-check-label" for="sensorRe">Sensor de ré</label>
           </div>
         </div>
 
         <div class="row justify-content-left">
           <div class="form-group col-md-12 col-lg-6 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="cameraRe" value="cameraRe">
+            <input class="form-check-input" type="checkbox" id="cameraRe" value="cameraRe" <% if (automovel.CameraRe){ %> checked <% } %>>
             <label class="form-check-label" for="cameraRe">Câmera de ré</label>
           </div>
         </div>

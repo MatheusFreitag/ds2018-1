@@ -1,29 +1,29 @@
-<h1 class="titulo">Usuários<a href="/usuario/add" class="btn btn-outline-light">Novo</a></h1>
+<h1 class="titulo">Usuários <!--<a href="/usuario/add" class="btn btn-outline-light">Novo</a>--></h1>
 <div class="container-fluid">
   <div class="row  justify-content-center">
     <% usuarios.forEach(function(usuario){ %>
-    <div class="card bg-light border-dark mb-3 mr-3" style="max-width: 22rem;">
-      <img class="card-img-top" src="<%=usuario.foto%>" alt="foto do usuário">
+      <div class="card bg-light border-dark mb-3 mr-3" style="max-width: 22rem;">
+        <img class="card-img-top" src="/<%=usuario.Foto%>" alt="foto do usuário">
 
-      <div class="card-header">
-        <div class="form-row">
-          <h5 class="card-title"><%=usuario.nome%></h5>
-
-          <div class="form-group reverse starrating offset-sm-2">
-            <input type="radio" id="star5" class="star" name="dialogo" value="5" /><label class="fas fa-star" for="star5" title="5 estrelas"></label>
-            <input type="radio" id="star4" class="star" name="dialogo" value="4" /><label class="fas fa-star" for="star4" title="4 estrelas"></label>
-            <input type="radio" id="star3" class="star" name="dialogo" value="3" /><label class="fas fa-star" for="star3" title="3 estrelas"></label>
-            <input type="radio" id="star2" class="star" name="dialogo" value="2" /><label class="fas fa-star" for="star2" title="2 estrelas"></label>
-            <input type="radio" id="star1" class="star" name="dialogo" value="1" /><label class="fas fa-star" for="star1" title="1 estrela"></label>
+        <div class="card-header">
+          <div class="form-row">
+            <h5 class="card-title"><%=usuario.Nome%></h5>
+  
+            <div class="form-group reverse starrating offset-sm-2">
+              <input type="radio" id="star5" class="star" name="dialogo" value="5" /><label class="fas fa-star" for="star5" title="5 estrelas"></label>
+              <input type="radio" id="star4" class="star" name="dialogo" value="4" /><label class="fas fa-star" for="star4" title="4 estrelas"></label>
+              <input type="radio" id="star3" class="star" name="dialogo" value="3" /><label class="fas fa-star" for="star3" title="3 estrelas"></label>
+              <input type="radio" id="star2" class="star" name="dialogo" value="2" /><label class="fas fa-star" for="star2" title="2 estrelas"></label>
+              <input type="radio" id="star1" class="star" name="dialogo" value="1" /><label class="fas fa-star" for="star1" title="1 estrela"></label>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card-footer text-right">
-        <button type="button" class="btn btn-info">Ver mais</button>
-      </div>
+        <div class="card-footer text-right">
+          <a href="/usuario/about/<%=usuario.CPF%>"><button type="button" class="btn btn-info">Ver mais</button></a>
+        </div>
 
-    </div>
+      </div>
     <% })%>
   </div>
 </div>
@@ -32,19 +32,19 @@
 
             <!-- <div class="col-md-3">
                 <div class="card text-center">
-                    <div class="card-header">CPF: <%= usuario.cpf %></div>
+                    <div class="card-header">CPF: </div>
                     <div class="card-body">
-                        <h5 class="card-title"><%= usuario.nome %></h5>
-                        <p class="card-text"><%= usuario.email %></p>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
 
                         <form method="post">
-                            <a href="/usuario/about/<%=usuario.cpf%>" class="btn btn-primary btn-sm mb-2 mt-2">Ver Mais</a>
+                            <a href="/usuario/about/" class="btn btn-primary btn-sm mb-2 mt-2">Ver Mais</a>
                         </form>
                     </div>
                     <div class="card-footer text-muted">
                         <form method="post">
-                            <a href="/usuario/edit/<%=usuario.cpf%>" class="btn btn-warning btn-sm mb-2 mt-2">Editar</a>
-                            <a href="/usuario/delete/<%= usuario.cpf%>" class="btn btn-danger btn-sm mb-2 mt-2">Deletar</a>
+                            <a href="/usuario/edit/" class="btn btn-warning btn-sm mb-2 mt-2">Editar</a>
+                            <a href="/usuario/delete/" class="btn btn-danger btn-sm mb-2 mt-2">Deletar</a>
                         </form>
                     </div>
                 </div>
