@@ -74,42 +74,95 @@ module.exports = {
 		if (req.body.sensorRe && req.body.sensorRe == 'on') {SensorRe = 1} else { SensorRe = 0}
 		if (req.body.cameraRe && req.body.cameraRe == 'on') {CameraRe = 1} else { CameraRe = 0}
 		
-		Automovel.query(`UPDATE c9.Automovel SET \
-		Marca= "${req.body.Marca}", \ 
-		Modelo= "${req.body.Modelo}", \ 
-		Ano= "${req.body.Ano}", \ 
-		Cambio= "${req.body.Cambio}", \ 
-		Combustivel= "${req.body.Combustivel}", \ 
-		Direcao= "${req.body.Direcao}", \ 
-		PotenciaMotor= "${req.body.Potencia}", \ 
-		Tipo = "${req.body.tipoVeiculo }", \ 
-		Portas= "${req.body.numPortas}", \ 
-		Cor= "${req.body.corVeiculo}", \ 
-		Chassi= "${req.body.Chassi}", \ 
-		AirBag= "${AirBag}", \ 
-		ArCondicionado= "${ArCondicionado}", \ 
-		Alarme= "${Alarme}", \ 
-		TravaEletrica= "${TravaEletrica}", \ 
-		Som= "${Som}", \ 
-		VidroEletrico= "${VidroEletrico}", \ 
-		Blindado= "${Blindado}", \ 
-		SensorRe= "${SensorRe}", \ 
-		CameraRe= "${CameraRe}", \ 
-		Titulo= "${req.body.Titulo}", \ 
-		Descricao= "${req.body.Descricao}", \ 
-		FotoVeiculoFrente= "images/automovel/fiatUno.jpg", \ 
-		FotoVeiculoInterior= "images/automovel/fiatUno.jpg", \ 
-		FotoVeiculoLateral= "images/automovel/fiatUno.jpg", \ 
-		FotoDocumento= "images/automovel/fiatUno.jpg", \ 
-		Cidade= "${req.body.cidadesEstado}", \ 
-		Estado= "${req.body.estadosBrasil}", \ 
-		PrecoDiaria= "${req.body.precoDiaria}" \
-		WHERE Placa="${req.body.Placa}";`, [], function(err, p){
-		        if(err){
-		            res.send(500, {error: "Database error"});
-		        }
-			    res.redirect('automovel/list');
-		});
+		/* Quer mudar a foto */
+		if (req.body.FotoVeiculo != '') {
+			console.log('sim');
+			req.file('FotoVeiculo').upload({ 
+    		dirname: require('path').resolve(sails.config.appPath, 'assets/images/automovel'),
+    		saveAs: req.body.Placa + '_' + "FotoVeiculo." + (req.file('FotoVeiculo')._files[0].stream.filename).substr(req.file('FotoVeiculo')._files[0].stream.filename.length - 3)
+	    	}, function (err, uploadedFiles) {
+			  console.log(uploadedFiles);
+		  
+				var lista = uploadedFiles[0].fd.split('/');
+	            var tam = lista.length;
+	            var nomeFoto = lista[tam-1];
+	            
+				Automovel.query(`UPDATE c9.Automovel SET \
+				Marca= "${req.body.Marca}", \ 
+				Modelo= "${req.body.Modelo}", \ 
+				Ano= "${req.body.Ano}", \ 
+				Cambio= "${req.body.Cambio}", \ 
+				Combustivel= "${req.body.Combustivel}", \ 
+				Direcao= "${req.body.Direcao}", \ 
+				PotenciaMotor= "${req.body.Potencia}", \ 
+				Tipo = "${req.body.tipoVeiculo }", \ 
+				Portas= "${req.body.numPortas}", \ 
+				Cor= "${req.body.corVeiculo}", \ 
+				Chassi= "${req.body.Chassi}", \ 
+				AirBag= "${AirBag}", \ 
+				ArCondicionado= "${ArCondicionado}", \ 
+				Alarme= "${Alarme}", \ 
+				TravaEletrica= "${TravaEletrica}", \ 
+				Som= "${Som}", \ 
+				VidroEletrico= "${VidroEletrico}", \ 
+				Blindado= "${Blindado}", \ 
+				SensorRe= "${SensorRe}", \ 
+				CameraRe= "${CameraRe}", \ 
+				Titulo= "${req.body.Titulo}", \ 
+				Descricao= "${req.body.Descricao}", \ 
+				FotoVeiculoFrente= "${nomeFoto}", \ 
+				FotoVeiculoInterior= "${nomeFoto}", \ 
+				FotoVeiculoLateral= "${nomeFoto}", \ 
+				FotoDocumento= "${nomeFoto}", \ 
+				Cidade= "${req.body.cidadesEstado}", \ 
+				Estado= "${req.body.estadosBrasil}", \ 
+				PrecoDiaria= "${req.body.precoDiaria}" \
+				WHERE Placa="${req.body.Placa}";`, [], function(err, p){
+				        if(err){
+				            res.send(500, {error: "Database error"});
+				        }
+					    res.redirect('automovel/list');
+				});
+	    	});
+			
+		}
+		/* Não quer mudar a foto */
+		else{
+			Automovel.query(`UPDATE c9.Automovel SET \
+			Marca= "${req.body.Marca}", \ 
+			Modelo= "${req.body.Modelo}", \ 
+			Ano= "${req.body.Ano}", \ 
+			Cambio= "${req.body.Cambio}", \ 
+			Combustivel= "${req.body.Combustivel}", \ 
+			Direcao= "${req.body.Direcao}", \ 
+			PotenciaMotor= "${req.body.Potencia}", \ 
+			Tipo = "${req.body.tipoVeiculo }", \ 
+			Portas= "${req.body.numPortas}", \ 
+			Cor= "${req.body.corVeiculo}", \ 
+			Chassi= "${req.body.Chassi}", \ 
+			AirBag= "${AirBag}", \ 
+			ArCondicionado= "${ArCondicionado}", \ 
+			Alarme= "${Alarme}", \ 
+			TravaEletrica= "${TravaEletrica}", \ 
+			Som= "${Som}", \ 
+			VidroEletrico= "${VidroEletrico}", \ 
+			Blindado= "${Blindado}", \ 
+			SensorRe= "${SensorRe}", \ 
+			CameraRe= "${CameraRe}", \ 
+			Titulo= "${req.body.Titulo}", \ 
+			Descricao= "${req.body.Descricao}", \ 
+			Cidade= "${req.body.cidadesEstado}", \ 
+			Estado= "${req.body.estadosBrasil}", \ 
+			PrecoDiaria= "${req.body.precoDiaria}" \
+			WHERE Placa="${req.body.Placa}";`, [], function(err, p){
+			        if(err){
+			            res.send(500, {error: "Database error"});
+			        }
+				    res.redirect('automovel/list');
+			});
+		}
+		
+		
 	},
 	delete:function(req,res){
 	    Usuario.query(`DELETE FROM c9.automovel WHERE placa="${req.params.id}";`, [], function(err){

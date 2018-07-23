@@ -7,11 +7,11 @@
     </div>
   </div>
 
-  <form method="post" action="/automovel/update">
+  <form method="post" action="/automovel/update" enctype="multipart/form-data">
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-1">
         <label for="inputTitulo">Título</label>
-        <input type="text" class="form-control" id="inputTitulo" value='<%= automovel.Titulo%>'>
+        <input type="text" name="Titulo" class="form-control" id="inputTitulo" value='<%= automovel.Titulo%>'>
       </div>
     </div>
 
@@ -332,27 +332,27 @@
 
     <div class="form-row dragdrop-area ">
         <div class="form-group offset-md-1">
-          <label for="FotoFrente">Foto de frente do veículo</label>
-          <input type="file" name="file" class="form-control-file" id="FotoFrente">
-          <span>Ou arraste e solte uma foto na área pontilhada.</span>
+          <label for="FotoVeiculo">Foto de frente do veículo</label>
+          <input type="file" name="FotoVeiculo" id="FotoFrente">
+          <!--<span>Ou arraste e solte uma foto na área pontilhada.</span>-->
         </div>
       </div>
 
-      <div class="form-row dragdrop-area ">
-        <div class="form-group offset-md-1">
-          <label for="FotoInterior">Foto do interior do veículo</label>
-          <input type="file" name="file" class="form-control-file" id="FotoInterior">
-          <span>Ou arraste e solte uma foto na área pontilhada.</span>
-        </div>
-      </div>
+      <!--<div class="form-row dragdrop-area ">-->
+      <!--  <div class="form-group offset-md-1">-->
+      <!--    <label for="FotoInterior">Foto do interior do veículo</label>-->
+      <!--    <input type="file" name="file" class="form-control-file" id="FotoInterior">-->
+      <!--    <span>Ou arraste e solte uma foto na área pontilhada.</span>-->
+      <!--  </div>-->
+      <!--</div>-->
 
-      <div class="form-row dragdrop-area ">
-        <div class="form-group offset-md-1">
-          <label for="FotoTraseira">Foto da traseira do veículo</label>
-          <input type="file" name="file" class="form-control-file" id="FotoTraseira">
-          <span>Ou arraste e solte uma foto na área pontilhada.</span>
-        </div>
-      </div>
+      <!--<div class="form-row dragdrop-area ">-->
+      <!--  <div class="form-group offset-md-1">-->
+      <!--    <label for="FotoTraseira">Foto da traseira do veículo</label>-->
+      <!--    <input type="file" name="file" class="form-control-file" id="FotoTraseira">-->
+      <!--    <span>Ou arraste e solte uma foto na área pontilhada.</span>-->
+      <!--  </div>-->
+      <!--</div>-->
 
     <div class="form-row">
       <div class="form-check form-check-inline  col-md-4 offset-md-1">
