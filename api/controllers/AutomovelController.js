@@ -18,13 +18,26 @@ module.exports = {
 	    res.view('automovel/add');
     },
     create: function(req,res){
+    	console.log(req.body);
 
-		  Automovel.query(`INSERT INTO c9.Automovel (Placa, Marca, Modelo, Ano, Cambio, Combustivel, Direcao, PotenciaMotor, Tipo, Portas, Cor, Chassi, Disponibilidade, AirBag, ArCondicionado, Alarme, TravaEletrica, Som, VidroEletrico, Blindado, SensorRe, CameraRe, Titulo, Descricao, FotoVeiculoFrente, FotoVeiculoInterior, FotoVeiculoLateral, FotoDocumento, PossuiSeguro, Status, Cidade, Estado, Avaliacao, NumeroAvaliacoes, PrecoDiaria, CPF) VALUES("${req.body.Placa}", "${req.body.Marca}", "${req.body.Modelo}", "${req.body.Ano}", "${req.body.Cambio}", "${req.body.Combustivel}", "${req.body.Direcao}", "${req.body.Potencia}", "${req.body.tipoVeiculo}", "${req.body.numPortas}", "${req.body.corVeiculo}", "${req.body.Chassi}", "D", "${req.body.AirBag}", "${req.body.ArCondicionado}", "${req.body.Alarme}", "${req.body.travaEletrica}", "${req.body.Som}", "${req.body.vidroEletrico}", "${req.body.Blindado}", "${req.body.sensorRe}",  "${req.body.cameraRe}", "${req.body.Titulo}", "${req.body.Descricao}", "images/automovel/fiatUno.jpg", "images/automovel/fiatUno.jpg", "images/automovel/fiatUno.jpg", "images/automovel/fiatUno.jpg", "1", "Disponivel", "${req.body.cidadesEstado}", "${req.body.estadosBrasil}", "5", "0}", "${req.body.precoDiaria}", "02840193719");`, [], function(err, usuarios){
-	        if(err){
-	            res.send(500, {error: "Database error"});
-	    	}
-	        res.redirect('automovel/list');
-	    });
+    	req.file('FotoVeiculo').upload({
+    		dirname: require('path').resolve(sails.config.appPath, 'assets/images/automovel'),
+    		saveAs: req.body.Placa + '_' + "FotoVeiculo." + (req.file('FotoVeiculo')._files[0].stream.filename).substr(req.file('FotoVeiculo')._files[0].stream.filename.length - 3)
+    	}, function (err, uploadedFiles) {
+		  console.log(uploadedFiles);
+
+			var lista = uploadedFiles[0].fd.split('/');
+            var tam = lista.length;
+            var nomeFoto = lista[tam-1];
+
+
+		  Automovel.query(`INSERT INTO c9.Automovel (Placa, Marca, Modelo, Ano, Cambio, Combustivel, Direcao, PotenciaMotor, Tipo, Portas, Cor, Chassi, Disponibilidade, AirBag, ArCondicionado, Alarme, TravaEletrica, Som, VidroEletrico, Blindado, SensorRe, CameraRe, Titulo, Descricao, FotoVeiculoFrente, FotoVeiculoInterior, FotoVeiculoLateral, FotoDocumento, PossuiSeguro, Status, Cidade, Estado, Avaliacao, NumeroAvaliacoes, PrecoDiaria, CPF) VALUES("${req.body.Placa}", "${req.body.Marca}", "${req.body.Modelo}", "${req.body.Ano}", "${req.body.Cambio}", "${req.body.Combustivel}", "${req.body.Direcao}", "${req.body.Potencia}", "${req.body.tipoVeiculo}", "${req.body.numPortas}", "${req.body.corVeiculo}", "${req.body.Chassi}", "D", "${req.body.AirBag}", "${req.body.ArCondicionado}", "${req.body.Alarme}", "${req.body.travaEletrica}", "${req.body.Som}", "${req.body.vidroEletrico}", "${req.body.Blindado}", "${req.body.sensorRe}",  "${req.body.cameraRe}", "${req.body.Titulo}", "${req.body.Descricao}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "1", "Disponivel", "${req.body.cidadesEstado}", "${req.body.estadosBrasil}", "5", "0}", "${req.body.precoDiaria}", "02840193719");`, [], function(err, automoveis){
+			        if(err){
+			            res.send(500, {error: "Database error"});
+			    	}
+    				res.redirect('automovel/list');
+				});
+		});
 	},
 	about: function(req,res){
 		Usuario.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, ['u'], function(err, automovel) {
@@ -58,6 +71,7 @@ module.exports = {
 		if (req.body.Blindado && req.body.Blindado == 'on') {Blindado = 1} else { Blindado = 0}
 		if (req.body.sensorRe && req.body.sensorRe == 'on') {SensorRe = 1} else { SensorRe = 0}
 		if (req.body.cameraRe && req.body.cameraRe == 'on') {CameraRe = 1} else { CameraRe = 0}
+<<<<<<< HEAD
 
 		Automovel.query(`UPDATE c9.Automovel SET \
 		Marca= "${req.body.Marca}", \
@@ -95,6 +109,98 @@ module.exports = {
 		        }
 			    res.redirect('automovel/list');
 		});
+=======
+
+		/* Quer mudar a foto */
+		if (req.body.FotoVeiculo != '') {
+			console.log('sim');
+			req.file('FotoVeiculo').upload({
+    		dirname: require('path').resolve(sails.config.appPath, 'assets/images/automovel'),
+    		saveAs: req.body.Placa + '_' + "FotoVeiculo." + (req.file('FotoVeiculo')._files[0].stream.filename).substr(req.file('FotoVeiculo')._files[0].stream.filename.length - 3)
+	    	}, function (err, uploadedFiles) {
+			  console.log(uploadedFiles);
+
+				var lista = uploadedFiles[0].fd.split('/');
+	            var tam = lista.length;
+	            var nomeFoto = lista[tam-1];
+
+				Automovel.query(`UPDATE c9.Automovel SET \
+				Marca= "${req.body.Marca}", \
+				Modelo= "${req.body.Modelo}", \
+				Ano= "${req.body.Ano}", \
+				Cambio= "${req.body.Cambio}", \
+				Combustivel= "${req.body.Combustivel}", \
+				Direcao= "${req.body.Direcao}", \
+				PotenciaMotor= "${req.body.Potencia}", \
+				Tipo = "${req.body.tipoVeiculo }", \
+				Portas= "${req.body.numPortas}", \
+				Cor= "${req.body.corVeiculo}", \
+				Chassi= "${req.body.Chassi}", \
+				AirBag= "${AirBag}", \
+				ArCondicionado= "${ArCondicionado}", \
+				Alarme= "${Alarme}", \
+				TravaEletrica= "${TravaEletrica}", \
+				Som= "${Som}", \
+				VidroEletrico= "${VidroEletrico}", \
+				Blindado= "${Blindado}", \
+				SensorRe= "${SensorRe}", \
+				CameraRe= "${CameraRe}", \
+				Titulo= "${req.body.Titulo}", \
+				Descricao= "${req.body.Descricao}", \
+				FotoVeiculoFrente= "${nomeFoto}", \
+				FotoVeiculoInterior= "${nomeFoto}", \
+				FotoVeiculoLateral= "${nomeFoto}", \
+				FotoDocumento= "${nomeFoto}", \
+				Cidade= "${req.body.cidadesEstado}", \
+				Estado= "${req.body.estadosBrasil}", \
+				PrecoDiaria= "${req.body.precoDiaria}" \
+				WHERE Placa="${req.body.Placa}";`, [], function(err, p){
+				        if(err){
+				            res.send(500, {error: "Database error"});
+				        }
+					    res.redirect('automovel/list');
+				});
+	    	});
+
+		}
+		/* Não quer mudar a foto */
+		else{
+			Automovel.query(`UPDATE c9.Automovel SET \
+			Marca= "${req.body.Marca}", \
+			Modelo= "${req.body.Modelo}", \
+			Ano= "${req.body.Ano}", \
+			Cambio= "${req.body.Cambio}", \
+			Combustivel= "${req.body.Combustivel}", \
+			Direcao= "${req.body.Direcao}", \
+			PotenciaMotor= "${req.body.Potencia}", \
+			Tipo = "${req.body.tipoVeiculo }", \
+			Portas= "${req.body.numPortas}", \
+			Cor= "${req.body.corVeiculo}", \
+			Chassi= "${req.body.Chassi}", \
+			AirBag= "${AirBag}", \
+			ArCondicionado= "${ArCondicionado}", \
+			Alarme= "${Alarme}", \
+			TravaEletrica= "${TravaEletrica}", \
+			Som= "${Som}", \
+			VidroEletrico= "${VidroEletrico}", \
+			Blindado= "${Blindado}", \
+			SensorRe= "${SensorRe}", \
+			CameraRe= "${CameraRe}", \
+			Titulo= "${req.body.Titulo}", \
+			Descricao= "${req.body.Descricao}", \
+			Cidade= "${req.body.cidadesEstado}", \
+			Estado= "${req.body.estadosBrasil}", \
+			PrecoDiaria= "${req.body.precoDiaria}" \
+			WHERE Placa="${req.body.Placa}";`, [], function(err, p){
+			        if(err){
+			            res.send(500, {error: "Database error"});
+			        }
+				    res.redirect('automovel/list');
+			});
+		}
+
+
+>>>>>>> 3c29e7faa7a390915cdbe1328d1c590d65f2c800
 	},
 	delete:function(req,res){
 	    Usuario.query(`DELETE FROM c9.automovel WHERE placa="${req.params.id}";`, [], function(err){
