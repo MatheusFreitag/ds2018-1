@@ -8,7 +8,7 @@ const util = require('util');
 
 module.exports = {
   list:function(req,res){
-    Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
+    Usuario.query('SELECT * from c9.usuario;', [], function(err, usuarios) {
       if(err) {
         res.send(500, {error: "Database error"});
       }
@@ -20,17 +20,19 @@ module.exports = {
     res.view('usuario/add');
   },
   create: function(req,res){
-    res.redirect('/');
-    Usuario.query(`INSERT INTO banco.usuario (cpf, nome, nascimento, rg, email, senha, endereco, telefone, cidade, estado, sexo) VALUES( "${req.body.cpf}", "${req.body.nome}", "${req.body.nascimento}", "${req.body.rg}", "${req.body.email}", "${req.body.senha}", "${req.body.endereco}", "${req.body.telefone}", "${req.body.cidade}", "${req.body.estado}", "${req.body.sexo}");`, [], function(err, usuarios){
+    console.log(req.body);
+    Usuario.query(`INSERT INTO c9.usuario (cpf, nome, nascimento, rg, email, senha, endereco, telefone, cidade, estado, sexo) VALUES( "${req.body.cpf}", "${req.body.nome}", "${req.body.nascimento}", "${req.body.rg}", "${req.body.email}", "${req.body.senha}", "${req.body.endereco}", "${req.body.telefone}", "${req.body.cidade}", "${req.body.estado}", "${req.body.sexo}");`, [], function(err, usuarios){
       if(err){
         res.send(500, {error: "Database error"});
       }
-      else
+      else {
         console.log("cadastro criado com sucesso!");
+        res.redirect('/');
+      }
     });
   },
   about: function(req,res){
-    Usuario.query(`SELECT * from c9.Usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
+    Usuario.query(`SELECT * from c9.usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
       if(err){
         res.send(500, {error: "Database error"});
       }
@@ -47,12 +49,21 @@ module.exports = {
     });
   },
   update: function(req,res){
-    console.log(`${req.body.nascimento}`);
-    Usuario.query(`UPDATE banco.usuario SET nome="${req.body.nome}", nascimento="${req.body.nascimento}", rg="${req.body.rg}", email="${req.body.email}", senha="${req.body.senha}", endereco="${req.body.endereco}", telefone="${req.body.telefone}", cidade="${req.body.cidade}", estado="${req.body.estado}" WHERE cpf="${req.body.cpf}";`, [], function(err, p){
+
+    Usuario.query(`UPDATE banco.usuario SET \
+      nome="${req.body.nome}", \
+      nascimento="${req.body.nascimento}", \
+      rg="${req.body.rg}", email="${req.body.email}", \
+      senha="${req.body.senha}", \
+      endereco="${req.body.endereco}", \
+      telefone="${req.body.telefone}", \
+      cidade="${req.body.cidade}", \
+      estado="${req.body.estado}" \
+      WHERE cpf="${req.body.cpf}";`, [], function(err, p){
       if(err){
         res.send(500, {error: "Database error"});
       }
-      res.redirect('/usuario/list');
+      res.redirect('/usuario/edit');
     });
   },
   delete:function(req,res){
@@ -66,6 +77,3 @@ module.exports = {
     return false;
   }
 };
-
-//cpf="${req.body.cpf}"
-//, nascimento="${req.body.nascimento}", rg="${req.body.rg}", email="${req.body.email}", senha="${req.body.senha}", endereco="${req.body.endereco}", telefone="${req.body.telefone}", cidade="${req.body.cidade}", estado="${req.body.estado}"
