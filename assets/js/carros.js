@@ -14,7 +14,7 @@ $(document).ready(function () {
 			var options_modelo = '';
 			var id = $("#inputMarca option:selected").val();	
 			console.log(id);
-			var url = 'http://fipeapi.appspot.com/api/1/carros/veiculos/' + id + '.json';
+			var url = 'https://fipeapi.appspot.com/api/1/carros/veiculos/' + id + '.json';
 
 			$("#inputModelo").html('');//Zera o campo modelo sob qualquer alteração;
 
