@@ -8,7 +8,7 @@ const util = require('util');
 
 module.exports = {
   list:function(req,res){
-    Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
+    Usuario.query('SELECT * from c9.usuario;', [], function(err, usuarios) {
       if(err) {
         res.send(500, {error: "Database error"});
       }
@@ -21,7 +21,6 @@ module.exports = {
   },
   create: function(req,res){
     console.log(req.body);
-    
     req.file('FotoPerfil').upload({ 
     		dirname: require('path').resolve(sails.config.appPath, 'assets/images/usuario'),
     		saveAs: req.body.CPF + '_' + "FotoPerfil." + (req.file('FotoPerfil')._files[0].stream.filename).substr(req.file('FotoPerfil')._files[0].stream.filename.length - 3)
@@ -40,7 +39,7 @@ module.exports = {
     	});
   },
   about: function(req,res){
-    Usuario.query(`SELECT * from c9.Usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
+    Usuario.query(`SELECT * from c9.usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
       if(err){
         res.send(500, {error: "Database error"});
       }
@@ -87,7 +86,6 @@ module.exports = {
           res.redirect('/usuario/list');
       });
 		}
-    
   },
   delete:function(req,res){
     Usuario.query(`DELETE FROM banco.usuario WHERE cpf="${req.params.id}";`, [], function(err){
@@ -121,6 +119,3 @@ module.exports = {
 		});
   }
 };
-
-//cpf="${req.body.cpf}"
-//, nascimento="${req.body.nascimento}", rg="${req.body.rg}", email="${req.body.email}", senha="${req.body.senha}", endereco="${req.body.endereco}", telefone="${req.body.telefone}", cidade="${req.body.cidade}", estado="${req.body.estado}"
