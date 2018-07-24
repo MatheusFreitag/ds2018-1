@@ -8,7 +8,7 @@ const util = require('util');
 
 module.exports = {
   list:function(req,res){
-    Usuario.query('SELECT * from c9.usuario;', [], function(err, usuarios) {
+    Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
       if(err) {
         res.send(500, {error: "Database error"});
       }
@@ -39,7 +39,7 @@ module.exports = {
     	});
   },
   about: function(req,res){
-    Usuario.query(`SELECT * from c9.usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
+    Usuario.query(`SELECT * from c9.Usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
       if(err){
         res.send(500, {error: "Database error"});
       }
