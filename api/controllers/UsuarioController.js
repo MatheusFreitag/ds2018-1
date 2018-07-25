@@ -7,7 +7,7 @@
 const util = require('util');
 
 module.exports = {
-  list:function(req,res){
+  list: function(req,res){
     Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
       if(err) {
         res.send(500, {error: "Database error"});
@@ -16,9 +16,12 @@ module.exports = {
       res.view('usuario/list', {usuarios: usuarios});
     });
   },
+  
+  
   add: function(req,res){
     res.view('usuario/add');
   },
+  
   create: function(req,res){
     console.log(req.body);
     req.file('FotoPerfil').upload({ 
@@ -38,6 +41,7 @@ module.exports = {
               });
     	});
   },
+  
   about: function(req,res){
     Usuario.query(`SELECT * from c9.Usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
       if(err){
@@ -46,6 +50,7 @@ module.exports = {
       res.view('usuario/about', {usuario: usuario[0]});
     })
   },
+  
   edit: function(req,res){
     Usuario.query(`SELECT * from c9.Usuario WHERE cpf="${req.params.id}";`, [], function(err, usuario){
       if(err){
