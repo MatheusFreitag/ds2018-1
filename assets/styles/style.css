@@ -78,9 +78,9 @@ p {
     display: block;
 }
 
-.container {
+/*.container {
     border-radius: 5px;
-}
+}*/
 
 /* Estilos home */
 
@@ -242,9 +242,6 @@ label, legend{
 }
 
 @media (min-width: 769px) {
-    .form-row{
-        /*text-align: right;*/
-    }
 
     .form-group.divstar.starrating{
         display: flex;
@@ -262,3 +259,44 @@ label, legend{
 .container-adicionar-usuario h1 {
     color: #222;
 }
+
+
+.listar-usuarios h5{
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.sobre-usuario {
+    color: #fff;
+    margin: 50px auto;
+}
+.sobre-usuario .nome {
+    font-size: 18px;
+}
+
+.sobre-usuario img{
+    float: left;
+}
+
+.editar-usuario {
+    background-color: #fff;
+}
+.editar-usuario .header {
+    text-align: center;
+}
+
+.editar-usuario .header h1 {
+    color: #222;
+}
+
+.classimage img {
+    max-width:200px;
+    max-height:150px;
+    min-width:200px;
+    min-height:150px;
+    width: auto;
+    height: auto;
+}
+

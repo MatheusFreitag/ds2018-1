@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$.get('../datasets/estados_cidades.json', function (data) {
+	$.get('/datasets/estados_cidades.json', function (data) {
 		
 		var items = [];
 		var options = '<option value="">Escolha um estado</option>';	
@@ -7,7 +7,9 @@ $(document).ready(function () {
 		$.each(data, function (key, val) {
 			options += '<option value="' + val.sigla + '">' + val.sigla + '</option>';
 		});					
-		$("#inputEstado").html(options);				
+		$("#inputEstado").focus(function() {
+			$(this).html(options);	
+		});
 		
 		$("#inputEstado").change(function () {				
 

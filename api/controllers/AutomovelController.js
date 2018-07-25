@@ -7,23 +7,28 @@
 
 module.exports = {
 	list:function(req,res){
-		console.log(req.param('CPF') != undefined);
-		if(req.param('CPF') != undefined){
-			Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
-			    if(err) { 
-			        res.send(500, {error: "Database error"});
-			    }
-			    res.view('automovel/list', {automoveis: automoveis});
-			});
-		}
-		else{
-			Automovel.query('SELECT * from c9.Automovel ;', [], function(err, automoveis) {
-			    if(err) { 
-			        res.send(500, {error: "Database error"});
-			    }
-			    res.view('automovel/list', {automoveis: automoveis});
-			});
-		}
+   // 	if(req.session.authenticated == 'ok'){
+			// console.log(req.param('CPF') != undefined);
+			if(req.param('CPF') != undefined){
+				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
+				    if(err) { 
+				        res.send(500, {error: "Database error"});
+				    }
+				    res.view('automovel/list', {automoveis: automoveis});
+				});
+			}
+			else{
+				Automovel.query('SELECT * from c9.Automovel ;', [], function(err, automoveis) {
+				    if(err) { 
+				        res.send(500, {error: "Database error"});
+				    }
+				    res.view('automovel/list', {automoveis: automoveis});
+				});
+			}
+    	// }
+    	// else{
+    	// 	res.redirect('/automovel/list');
+    	// }
     },
     add: function(req,res){
 	    res.view('automovel/add');
@@ -53,22 +58,37 @@ module.exports = {
 	
 	},
 	about: function(req,res){
-		Usuario.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, ['u'], function(err, automovel) {
-			if(err){
-	    		res.send(500, {error: "Database error"});
-	    	}
-	        res.view('automovel/about', {automovel: automovel[0]});
-	    })
+		if(req.session.authenticated == 'ok'){
+			Usuario.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, ['u'], function(err, automovel) {
+				if(err){
+		    		res.send(500, {error: "Database error"});
+		    	}
+		        res.view('automovel/about', {automovel: automovel[0]});
+		    })
+		}
+		else{
+			res.redirect('/usuario/add');
+		}
 	},
 	edit: function(req,res){
-		console.log(`${req.params.id}`);
-		Automovel.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, [], function(err, automovel){
-			if(err){
-	    		res.send(500, {error: "Database error"});
-	    	}
-	    	
-	    	res.view('automovel/edit', {automovel: automovel[0]});
-		});
+		if(req.session.authenticated == 'ok'){
+			console.log(`${req.params.id}`);
+			Automovel.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, [], function(err, automovel){
+				if(err){
+		    		res.send(500, {error: "Database error"});
+		    	}
+		    	
+		    	if(req.session.CPF == automovel[0].CPF){
+		    		res.view('automovel/edit', {automovel: automovel[0]});
+		    	}
+		    	else{
+		    		res.redirect('/automovel/add');
+		    	}
+			});
+		}
+		else{
+			res.redirect('/usuario/add');
+		}
 	},
 	update: function(req,res){
 		console.log(req.body);
@@ -176,14 +196,32 @@ module.exports = {
 		
 	},
 	delete:function(req,res){
-	    Usuario.query(`DELETE FROM c9.Automovel WHERE placa="${req.params.id}";`, [], function(err){
-	    	if(err){
-	    		res.send(500, {error: "Database error"});
-	    	}
-	    	res.redirect('automovel/list')
-	    });
-	    
-	    return false;
+		if(req.session.authenticated == 'ok'){
+		    Usuario.query(`DELETE FROM c9.Automovel WHERE (placa="${req.params.id}") AND (DataFinal < CURDATE());`, [], function(err){
+		    	if(err){
+		    		res.send(500, {error: "Database error"});
+		    	}
+		    	res.redirect('automovel/list')
+		    });
+		    
+		    return false;
+		}
+		else{
+			res.redirect('/usuario/add');
+		}
+	},
+	
+	reserva:function(req,res){
+		console.log(req.body)
+		
+		Automovel.query(`INSERT INTO c9.Aluguel (DataInicio, DataFim, Status, CPF, Placa, idAvaliacao, FotoVeiculoFrente, Titulo)
+		VALUES ("${req.body.DataInicio}, "${req.body.DataFim}", 'N', "${req.session.CPF}", "${req.body.Placa}", 0, "${req.body.FotoVeiculoFrente}", "${req.body.Titulo}";`, [], function(err, alugueis){
+			if(err){
+				res.send(500, {error: "Database error"});
+			}
+			res.view('usuario/listaAlugueis');
+		});
+		
 	}
 };
 

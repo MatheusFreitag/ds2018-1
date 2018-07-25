@@ -1,0 +1,25 @@
+<h1 class="titulo">Reservas Concluídas</h1>
+<div class="container-fluid listar-alugueis">
+  <div class="row  justify-content-center">
+    <% alugueis.forEach(function(aluguel){ %>
+      <div class="card bg-light border-dark mb-3 mr-3" style="max-width: 22rem;">
+        <img class="card-img-top" src="/images/automovel/<%=aluguel.FotoVeiculoFrente%>" alt="foto do automóvel">
+
+        <div class="card-header">
+          <div class="form-row">
+            <h5 class="card-title"><%=aluguel.titulo%></h5>
+  
+            <div class="center col-lg-3 d-flex align-items-end mb-3" >
+				<p class="card-text">Reserva ocorrida entre <%=aluguel.DataInicio%> e <%=aluguel.DataFim%></p>
+			</div>
+          </div>
+        </div>
+
+        <div class="card-footer text-right">
+          <a href="/usuario/avaliacao?idAluguel=<%=aluguel.idAluguel%>"><button type="button" class="btn btn-info">Avaliar</button></a>
+        </div>
+
+      </div>
+    <% })%>
+  </div>
+</div>

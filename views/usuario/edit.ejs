@@ -1,117 +1,81 @@
-<div class="container container-adicionar-usuario">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="header">
-        <h1>Editar Usuário</h1>
+<div class="container content rounded editar-usuario">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="header">
+          <h1>Editar Perfil</h1>
+          <img src="/images/usuario/<%=usuario.Foto%>" alt="foto do usuário">
+        </div>
       </div>
     </div>
+    <form method = "post" form action="/usuario/update" enctype="multipart/form-data">
+
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-1">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" name="Email" placeholder="<%= usuario.Email %>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-1">
+          <label for="inputEndereco">Endereço</label>
+          <input type="text" class="form-control" id="inputEndereco" name="Endereco" placeholder="<%= usuario.Endereco %>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4 offset-md-1">
+          <label for="inputEstado">Estado</label>
+          <select id="inputEstado" name="Estado" class="form-control">
+            <option value=""><%= usuario.Estado %></option>
+          </select>
+        </div>
+        <div class="form-group col-md-4 offset-md-2">
+          <label for="inputCidade">Cidade</label>
+          <select id="inputCidade" name="Cidade" class="form-control">
+            <option value=""><%= usuario.Cidade %></option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-4 offset-md-1">
+          <label for="inputTelefone">Telefone</label>
+          <input class="form-control" id="inputTelefone" name="Telefone" placeholder="<%= usuario.Telefone %>" type="text">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3 offset-md-1">
+          <label for="inputSenha">Senha Atual</label>
+          <input type="password" class="form-control" id="inputSenha" placeholder="Obrigatório*">
+        </div>
+        <div class="form-group col-md-3 offset-md-1">
+          <label for="inputNovaSenha">Nova Senha</label>
+          <input type="password" class="form-control " id="inputNovaSenha" name="Senha" placeholder="Obrigatório*">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputConfSenha">Confirmar Senha</label>
+          <input type="password" class="form-control " id="inputConfSenha" placeholder="Obrigatório*">
+        </div>
+      </div>
+      
+      <div class="form-row dragdrop-area dropzone">
+        <div class="form-group offset-md-1">
+          <label for="inputFotoPerfil">Trocar foto de perfil</label>
+          <input type="file" class="form-control-file" id="FotoPerfil" name="FotoPerfil">
+          <span>Ou arraste e solte uma foto na área pontilhada.</span>
+        </div>
+      </div>
+
+      <div class= "form-row">
+        <div class= "col-6 col-md-2 offset-md-1">
+          <button type="submit" class="btn btn-danger" id="botaoCancelar"> Cancelar </button>
+        </div>
+        <div class= " col-6 col-md-2 offset-md-6 d-flex flex-row-reverse ">
+          <button type="submit" class="btn btn-success" id="botaoFinalizar"> Atualizar </button>
+        </div>
+      </div>
+    </form>
   </div>
-
-  <form method="post" action="/usuario/update" enctype="multipart/form-data">
-    <div class="form-row">
-      <div class="form-group col-md-8 offset-md-1">
-        <label for="inputName">Nome Completo</label>
-        <input type="text" class="form-control" id="inputName" name="Nome" value="<%=usuario.Nome%>">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4 offset-md-1">
-        <label for="inputCPF">CPF</label>
-        <input type="text" class="form-control" id="inputCPF" name="CPF" value="<%=usuario.CPF%>" size="11">
-      </div>
-      <div class="form-group col-md-4 offset-md-2">
-        <label for="inputRG">RG</label>
-        <input type="text" class="form-control " id="inputRG" name="RG" value="<%=usuario.RG%>">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4 offset-md-1">
-        <label for="inputSexo">Sexo</label>
-        <select id="inputSexo" class="form-control" name="Sexo">
-          <option selected value="F">Feminino</option>
-          <option value="M">Masculino</option>
-        </select>
-      </div>
-      <div class="form-group col-md-4 offset-md-2">
-        <label for="inputNascimento">Data de Nascimento</label>
-        <input class="form-control" id="nascimento" name="Nascimento"  value="<%=usuario.Nascimento%>" type="text"/>
-
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-8 offset-md-1">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" name="Email" value="<%=usuario.Email%>">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-8 offset-md-1">
-        <label for="inputEndereco">Endereço</label>
-        <input type="text" class="form-control" id="inputEndereco" name="Endereco" value="<%=usuario.Endereco%>">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4 offset-md-1">
-        <label for="inputEstado">Estado</label>
-        <select id = "inputEstado" name="Estado" class="form-control">
-          <option value=""></option>
-        </select>
-      </div>
-      <div class="form-group col-md-4 offset-md-2">
-        <label for="inputCidade">Cidade</label>
-        <select id = "inputCidade" name="Cidade" class="form-control">
-        </select>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4 offset-md-1">
-        <label for="inputTelefone">Telefone</label>
-        <input class="form-control" id="inputTelefone" name="Telefone" value="<%=usuario.Telefone%>" type="text"/>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4 offset-md-1">
-        <label for="inputSenha">Senha</label>
-        <input type="password" class="form-control" id="inputSenha" name="Senha" value="<%=usuario.Senha%>">
-      </div>
-      <div class="form-group col-md-4 offset-md-2">
-        <label for="inputConfSenha">Confirmar Senha</label>
-        <input type="password" class="form-control " id="inputConfSenha" value="<%=usuario.Senha%>">
-      </div>
-    </div>
-
-    <div class="form-row dragdrop-area">
-      <div class="form-group offset-md-1">
-        <label for="FotoPerfil">Foto de perfil</label>
-        <input type="file" class="form-control-file" name="FotoPerfil" id="FotoPerfil">
-        <span>Ou arraste e solte uma foto na área pontilhada.</span>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-check form-check-inline  col-md-4 offset-md-1">
-        <input type="checkbox" class="form-check-input" id="termoUso" checked>
-        <label class="form-check-label" for="termoUso"> Concordo com os termos de uso</label>
-      </div>
-    </div>
-
-    <div class= "form-row ">
-      <div class= "col-md-11 d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Salvar Alterações </button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
-<script>
-  //document.getElementById("nascimento").value =`${// 1900 + new Date(usuario.Nascimento).getYear()>}-${("0" + //(new Date(usuario.Nascimento).getMonth() + 1)%>).slice(-2)}-${("0" + //new Date(usuario.Nascimento).getDate()%>).slice(-2)}`;
-</script>

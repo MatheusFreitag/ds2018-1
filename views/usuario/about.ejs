@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container sobre-usuario">
   <img src="/images/usuario/<%=usuario.Foto%>" class="rounded mx-auto d-block" alt="Responsive image">
 
   <div class="form-row">
     <div class="col-md-8 offset-md-1">
-      <label for="inputUserName"><%=usuario.Nome%></label>
+      <label class="nome" for="inputUserName"><%=usuario.Nome%></label>
     </div>
   </div>
 
@@ -18,8 +18,8 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-4 offset-md-4">
-      <label for="inputCidade"><%=usuario.Cidade%>, <%=usuario.Estado%></label>
+    <div class="form-group col-md-4 offset-md-1">
+      <label for="inputCidade">Localização: <%=usuario.Cidade%>, <%=usuario.Estado%></label>
     </div>
   </div>
 
@@ -41,9 +41,13 @@
     </div>
   </div>
 
-  <div class= "form-row">
+
+  <form action="/automovel/list">
+    <div class= "form-row">
     <div class= "col-6 col-md-2 offset-md-1">
       <button type="submit" class="btn btn-info" id="botaoCarros_User"> Carros Disponíveis </button>
     </div>
   </div>
+  </form>
+  
 </div>
