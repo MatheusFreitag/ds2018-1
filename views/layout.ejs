@@ -52,14 +52,14 @@
                         Olá, Usuário <i class="fa fa-user"></i>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="login_nav">
-                        <a class="dropdown-item" href="#">Meu Perfil</a>
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
-                        <a class="dropdown-item" href="#">Cadastrar Carro</a>
+                        <a class="dropdown-item" href="/usuario/about/<%=session.CPF%>">Meu Perfil</a>
+                        <a class="dropdown-item" href="/usuario/edit/<%=session.CPF%>">Editar Perfil</a>
+                        <a class="dropdown-item" href="/automovel/add">Cadastrar Carro</a>
                         <a class="dropdown-item" href="#">Minhas Reservas</a>
-                        <a class="dropdown-item" href="#">Carros Cadastrados</a>
+                        <a class="dropdown-item" href="/automovel/list?CPF=<%=session.CPF%>">Carros Cadastrados</a>
                         <a class="dropdown-item" href="#">Reservas Concluidas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Sair</a>
+                        <a class="dropdown-item" href="/usuario/logout">Sair</a>
                       </div>
                   </li>
                 </ul>
@@ -70,7 +70,7 @@
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
         		<div class="container d-flex flex-row-reverse">
         			<div class="navbar-nav ">
-        				<a class="nav-item nav-link" id="cadastro_nav" href="cadastrar_usuario.html">Cadastro</a>
+        				<a class="nav-item nav-link" id="cadastro_nav" href="/usuario/add">Cadastro</a>
         				<a class="nav-item nav-link" id ="login_nav" href="/" data-toggle="modal" data-target="#myModal">Login <i class="fa fa-user"></i></a></li>
         			</div>
         		</div>

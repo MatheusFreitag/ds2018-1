@@ -7,12 +7,23 @@
 
 module.exports = {
 	list:function(req,res){
-	   Automovel.query('SELECT * from c9.Automovel;', [], function(err, automoveis) {
-	        if(err) { 
-	            res.send(500, {error: "Database error"});
-	        }
-	        res.view('automovel/list', {automoveis: automoveis});
-		});
+		console.log(req.param('CPF') != undefined);
+		if(req.param('CPF') != undefined){
+			Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
+			    if(err) { 
+			        res.send(500, {error: "Database error"});
+			    }
+			    res.view('automovel/list', {automoveis: automoveis});
+			});
+		}
+		else{
+			Automovel.query('SELECT * from c9.Automovel ;', [], function(err, automoveis) {
+			    if(err) { 
+			        res.send(500, {error: "Database error"});
+			    }
+			    res.view('automovel/list', {automoveis: automoveis});
+			});
+		}
     },
     add: function(req,res){
 	    res.view('automovel/add');
@@ -165,7 +176,7 @@ module.exports = {
 		
 	},
 	delete:function(req,res){
-	    Usuario.query(`DELETE FROM c9.automovel WHERE placa="${req.params.id}";`, [], function(err){
+	    Usuario.query(`DELETE FROM c9.Automovel WHERE placa="${req.params.id}";`, [], function(err){
 	    	if(err){
 	    		res.send(500, {error: "Database error"});
 	    	}

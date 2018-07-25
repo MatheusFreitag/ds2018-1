@@ -88,7 +88,7 @@ module.exports = {
 		}
   },
   delete:function(req,res){
-    Usuario.query(`DELETE FROM banco.usuario WHERE cpf="${req.params.id}";`, [], function(err){
+    Usuario.query(`DELETE FROM c9.Usuario WHERE CPF="${req.params.id}";`, [], function(err){
       if(err){
         res.send(500, {error: "Database error"});
       }
@@ -99,7 +99,6 @@ module.exports = {
   },
   
   authenticate: function(req, res){
-    console.log(req.body);
      Usuario.query(`SELECT * from c9.Usuario WHERE Email='${req.body.Email}';`, [], function(err, usuario) {
 	        if(err) { 
 	            res.send(500, {error: "Database error"});
@@ -107,15 +106,21 @@ module.exports = {
 	        
 	        if(usuario[0] && usuario[0].Senha == req.body.Senha){
 	            req.session.authenticated = 'ok';
-	            req.session.cpf = usuario[0].CPF;
+	            req.session.CPF = usuario[0].CPF;
 	            res.redirect('/automovel/list');
 	        }
 	        else{
 	          console.log("no")
 	            req.session.authenticated = 'no';
-	            req.session.cpf = '';
+	            req.session.CPF = '';
 	            res.redirect('/');
 	        }
 		});
+  },
+  
+  logout: function(req,res){
+    req.session.authenticated = 'no';
+    req.session.CPF = '';
+    res.redirect('/');
   }
 };
