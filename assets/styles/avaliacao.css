@@ -38,9 +38,8 @@
 
 .reverse { display: flex; flex-direction: row-reverse; }
 
-label.fa-star:hover { transform:  scale(1.5); }
-
-.fa-star {
+label.fa-star-avaliacao:hover { transform:  scale(1.5); }
+.fa-star-avaliacao {
   padding-left:0.5em;
   font-size: 1.2em;
 }
