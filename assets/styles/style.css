@@ -183,6 +183,7 @@ label, legend{
 /* Stars */
 .starrating > input {
     display: none;
+    pointer-events: none;
 }  /* Remove radio buttons */
 
 .starrating > label:before {
@@ -193,6 +194,7 @@ label, legend{
 .starrating > label{
   color: gainsboro; /* Start color when not clicked */
   padding-left: 0.5em;
+  pointer-events: none;
 }
 
 .reverse {
