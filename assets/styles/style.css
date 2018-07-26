@@ -283,7 +283,9 @@ label, legend{
 }
 
 .editar-usuario {
-    background-color: #fff;
+    background: #f0f0f0;
+    margin-top: 2em;
+    margin-bottom: 2em
 }
 .editar-usuario .header {
     text-align: center;
