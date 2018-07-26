@@ -8,7 +8,7 @@
 module.exports = {
 	list:function(req,res){
    // 	if(req.session.authenticated == 'ok'){
-			// console.log(req.param('CPF') != undefined);
+			console.log(req.param('cpf') != undefined);
 			if(req.param('CPF') != undefined){
 				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
 				    if(err) { 
@@ -18,10 +18,12 @@ module.exports = {
 				});
 			}
 			else{
-				Automovel.query('SELECT * from c9.Automovel ;', [], function(err, automoveis) {
+				
+				Automovel.query("SELECT * from c9.Automovel;", [], function(err, automoveis) {
 				    if(err) { 
 				        res.send(500, {error: "Database error"});
 				    }
+				    console.log(automoveis)
 				    res.view('automovel/list', {automoveis: automoveis});
 				});
 			}
@@ -34,26 +36,29 @@ module.exports = {
 	    res.view('automovel/add');
     },
     create: function(req,res){
-    	console.log(req.body);
+    	if(req.session.authenticated == 'ok'){
     	
-    	req.file('FotoVeiculo').upload({ 
-    		dirname: require('path').resolve(sails.config.appPath, 'assets/images/automovel'),
-    		saveAs: req.body.Placa + '_' + "FotoVeiculo." + (req.file('FotoVeiculo')._files[0].stream.filename).substr(req.file('FotoVeiculo')._files[0].stream.filename.length - 3)
-    	}, function (err, uploadedFiles) {
-		  console.log(uploadedFiles);
-		  
-			var lista = uploadedFiles[0].fd.split('/');
-            var tam = lista.length;
-            var nomeFoto = lista[tam-1];
-		  
-		  
-		  Automovel.query(`INSERT INTO c9.Automovel (Placa, Marca, Modelo, Ano, Cambio, Combustivel, Direcao, PotenciaMotor, Tipo, Portas, Cor, Chassi, Disponibilidade, AirBag, ArCondicionado, Alarme, TravaEletrica, Som, VidroEletrico, Blindado, SensorRe, CameraRe, Titulo, Descricao, FotoVeiculoFrente, FotoVeiculoInterior, FotoVeiculoLateral, FotoDocumento, PossuiSeguro, Status, Cidade, Estado, Avaliacao, NumeroAvaliacoes, PrecoDiaria, CPF) VALUES("${req.body.Placa}", "${req.body.Marca}", "${req.body.Modelo}", "${req.body.Ano}", "${req.body.Cambio}", "${req.body.Combustivel}", "${req.body.Direcao}", "${req.body.Potencia}", "${req.body.tipoVeiculo}", "${req.body.numPortas}", "${req.body.corVeiculo}", "${req.body.Chassi}", "D", "${req.body.AirBag}", "${req.body.ArCondicionado}", "${req.body.Alarme}", "${req.body.travaEletrica}", "${req.body.Som}", "${req.body.vidroEletrico}", "${req.body.Blindado}", "${req.body.sensorRe}",  "${req.body.cameraRe}", "${req.body.Titulo}", "${req.body.Descricao}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "1", "Disponivel", "${req.body.cidadesEstado}", "${req.body.estadosBrasil}", "5", "0}", "${req.body.precoDiaria}", "02840193719");`, [], function(err, automoveis){
+	    	req.file('FotoVeiculo').upload({ 
+	    		dirname: require('path').resolve(sails.config.appPath, 'assets/images/automovel'),
+	    		saveAs: req.body.Placa + '_' + "FotoVeiculo." + (req.file('FotoVeiculo')._files[0].stream.filename).substr(req.file('FotoVeiculo')._files[0].stream.filename.length - 3)
+	    	}, function (err, uploadedFiles) {
+			  console.log(uploadedFiles);
+			  
+				var lista = uploadedFiles[0].fd.split('/');
+	            var tam = lista.length;
+	            var nomeFoto = lista[tam-1];
+			  
+				Automovel.query(`INSERT INTO c9.Automovel (Placa, Marca, Modelo, Ano, Cambio, Combustivel, Direcao, PotenciaMotor, Tipo, Portas, Cor, Chassi, Disponibilidade, AirBag, ArCondicionado, Alarme, TravaEletrica, Som, VidroEletrico, Blindado, SensorRe, CameraRe, Titulo, Descricao, FotoVeiculoFrente, FotoVeiculoInterior, FotoVeiculoLateral, FotoDocumento, PossuiSeguro, Status, Cidade, Estado, Avaliacao, NumeroAvaliacoes, PrecoDiaria, CPF) VALUES("${req.body.Placa}", "${req.body.Marca}", "${req.body.Modelo}", "${req.body.Ano}", "${req.body.Cambio}", "${req.body.Combustivel}", "${req.body.Direcao}", "${req.body.Potencia}", "${req.body.tipoVeiculo}", "${req.body.numPortas}", "${req.body.corVeiculo}", "${req.body.Chassi}", "D", "${req.body.AirBag}", "${req.body.ArCondicionado}", "${req.body.Alarme}", "${req.body.travaEletrica}", "${req.body.Som}", "${req.body.vidroEletrico}", "${req.body.Blindado}", "${req.body.sensorRe}",  "${req.body.cameraRe}", "${req.body.Titulo}", "${req.body.Descricao}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "${nomeFoto}", "1", "Disponivel", "${req.body.cidadesEstado}", "${req.body.estadosBrasil}", "5", "0}", "${req.body.precoDiaria}", "${req.session.CPF}");`, [], function(err, automoveis){
 			        if(err){
 			            res.send(500, {error: "Database error"});
 			    	}
-    				res.redirect('automovel/list');
+					res.redirect('automovel/list');
 				});
-		});
+			});
+    	}
+    	else{
+    		res.redirect('/');
+    	}
     	
 	
 	},
