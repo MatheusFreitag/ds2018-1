@@ -7,7 +7,7 @@
 
 module.exports = {
 	list:function(req,res){
-   // 	if(req.session.authenticated == 'ok'){
+    	if(req.session.authenticated == 'ok'){
 			console.log(req.param('cpf') != undefined);
 			if(req.param('CPF') != undefined){
 				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
@@ -27,10 +27,10 @@ module.exports = {
 				    res.view('automovel/list', {automoveis: automoveis});
 				});
 			}
-    	// }
-    	// else{
-    	// 	res.redirect('/automovel/list');
-    	// }
+    	 }
+    	 else{
+    	 	res.redirect('/automovel/list');
+    	 }
     },
     add: function(req,res){
 	    res.view('automovel/add');

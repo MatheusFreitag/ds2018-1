@@ -57,11 +57,10 @@
     </div>
   </div>
 
-
-  <form action="/automovel/list">
+  <form action="/automovel/list?CPF=<%=usuario.CPF%>">
     <div class= "form-row">
     <div class= "col-6 col-md-2 offset-md-1">
-      <button type="submit" class="btn btn-info" id="botaoCarros_User"> Carros Disponíveis </button>
+      <button type="submit" href="/automovel/list?CPF=<%=usuario.CPF%>" class="btn btn-info" id="botaoCarros_User"> Carros Disponíveis </button>
     </div>
   </div>
   </form>
