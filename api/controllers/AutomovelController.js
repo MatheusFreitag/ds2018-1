@@ -217,16 +217,27 @@ module.exports = {
 	},
 	
 	reserva:function(req,res){
-		console.log(req.body)
 		
-		Automovel.query(`INSERT INTO c9.Aluguel (DataInicio, DataFim, Status, CPF, Placa, idAvaliacao, FotoVeiculoFrente, Titulo)
-		VALUES ("${req.body.DataInicio}, "${req.body.DataFim}", 'N', "${req.session.CPF}", "${req.body.Placa}", 0, "${req.body.FotoVeiculoFrente}", "${req.body.Titulo}";`, [], function(err, alugueis){
-			if(err){
-				res.send(500, {error: "Database error"});
-			}
-			res.view('usuario/listaAlugueis');
-		});
+		console.log(req.body.DataInicio);
+		console.log(req.body.DataFim);
 		
+		var dataInicioFormatada = req.body.DataInicio[6].concat(req.body.DataInicio[7]).concat(req.body.DataInicio[8]).concat(req.body.DataInicio[9]).concat('-').concat(req.body.DataInicio[3]).concat(req.body.DataInicio[4]).concat('-').concat(req.body.DataInicio[0]).concat(req.body.DataInicio[1]);
+		var dataFimFormatada = req.body.DataFim[6].concat(req.body.DataFim[7]).concat(req.body.DataFim[8]).concat(req.body.DataFim[9]).concat('-').concat(req.body.DataFim[3]).concat(req.body.DataFim[4]).concat('-').concat(req.body.DataFim[0]).concat(req.body.DataFim[1]);
+
+		if(req.params.id != undefined){
+				Automovel.query(`SELECT * from c9.Automovel WHERE Placa="${req.params.id}";`, [], function(err, automoveis) {
+				    if(err) { 
+				        res.send(500, {error: "Database error"});
+				    }
+				    Automovel.query(`INSERT INTO c9.Aluguel (DataInicio, DataFim, CPF, Placa, FotoVeiculoFrente, Titulo, CPFDono) VALUES ("${dataInicioFormatada}", "${dataFimFormatada}", "${req.session.CPF}", "${automoveis[0].Placa}", "${automoveis[0].FotoVeiculoFrente}", "${automoveis[0].Titulo}", "${automoveis[0].CPF}");`, [], function(err){
+						if(err){
+							console.log(err);
+							res.send(500, {error: "Database error"});
+						}
+					res.redirect('/usuario/listaAlugueis');
+					});
+				});
+				    
+		}
 	}
 };
-
