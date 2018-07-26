@@ -32,7 +32,12 @@ module.exports = {
     	 }
     },
     add: function(req,res){
-	    res.view('automovel/add');
+    	if(req.session.authenticated == 'ok'){
+			 res.view('automovel/add');
+    	}
+    	else{
+    		res.redirect('/usuario/add');
+    	}
     },
     create: function(req,res){
     	if(req.session.authenticated == 'ok'){
