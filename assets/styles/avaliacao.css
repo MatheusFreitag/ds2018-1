@@ -1,4 +1,4 @@
-.header {
+.header-avaliacao {
     text-align: center;
 }
 
@@ -47,7 +47,7 @@ label.fa-star:hover { transform:  scale(1.5); }
 
 
 @media (min-width: 769px) {
-    .form-row{
+    .form-row-avaliacao{
         text-align: right;
     }
 }
