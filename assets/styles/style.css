@@ -182,18 +182,26 @@ label, legend{
 
 /* Stars */
 .starrating > input {
+    pointer-events: none;
     display: none;
 }  /* Remove radio buttons */
 
 .starrating > label:before {
   content: "\f005"; /* Star */
   display: inline-block;
+  pointer-events: none;
 }
 
 .starrating > label{
   color: gainsboro; /* Start color when not clicked */
   padding-left: 0.5em;
+  pointer-events: none;
+    
 }
+
+.starrating > input:checked ~ label
+{ color: gold; } /* Set yellow color when star checked */
+
 
 .reverse {
     display: flex;
