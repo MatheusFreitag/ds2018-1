@@ -1,13 +1,19 @@
-<div class="container content rounded editar-usuario">
+<div class="container rounded editar-usuario">
     <div class="row">
       <div class="col-lg-12">
         <div class="header">
           <h1>Editar Perfil</h1>
-          <img src="/images/usuario/<%=usuario.Foto%>" alt="foto do usuário">
         </div>
       </div>
     </div>
     <form method = "post" form action="/usuario/update" enctype="multipart/form-data">
+      
+       <div class="form-row">
+        <div class="form-group col-md-8 offset-md-1">
+          <label for="inputNome">Nome</label>
+          <input type="email" class="form-control" id="inputEmail" name="Nome" placeholder="<%= usuario.Nome %>">
+        </div>
+      </div>
 
       <div class="form-row">
         <div class="form-group col-md-8 offset-md-1">
@@ -48,24 +54,15 @@
 
       <div class="form-row">
         <div class="form-group col-md-3 offset-md-1">
-          <label for="inputSenha">Senha Atual</label>
+          <label for="inputSenha">Senha</label>
           <input type="password" class="form-control" id="inputSenha" placeholder="Obrigatório*">
-        </div>
-        <div class="form-group col-md-3 offset-md-1">
-          <label for="inputNovaSenha">Nova Senha</label>
-          <input type="password" class="form-control " id="inputNovaSenha" name="Senha" placeholder="Obrigatório*">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="inputConfSenha">Confirmar Senha</label>
-          <input type="password" class="form-control " id="inputConfSenha" placeholder="Obrigatório*">
         </div>
       </div>
       
-      <div class="form-row dragdrop-area dropzone">
+      <div class="form-row dropzone">
         <div class="form-group offset-md-1">
           <label for="inputFotoPerfil">Trocar foto de perfil</label>
           <input type="file" class="form-control-file" id="FotoPerfil" name="FotoPerfil">
-          <span>Ou arraste e solte uma foto na área pontilhada.</span>
         </div>
       </div>
 

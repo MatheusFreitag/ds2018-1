@@ -22,12 +22,12 @@
 								<label for="inputEstado">Estado</label>
 								<select id = "inputEstado" name="estados-brasil" class="form-control">
 									<option value=""></option>
-								</select>	
+								</select>
 							</div>
 							<div class="form-group col-md-5 offset-md-1">
 								<label for="inputCidade">Cidade</label>
 								<select id = "inputCidade" name="cidades-estado" class="form-control">
-								</select>	
+								</select>
 							</div>
 						</div>
 
@@ -47,21 +47,23 @@
 								<label for="inputMarca">Marca</label>
 								<select id = "inputMarca" name="marca" class="form-control">
 									<option value="Toyota">Toyota</option>
-								</select>	
-								
+								</select>
+
 							</div>
-							<div class="form-group col-md-5 col-lg-8 ">
+							<div class="form-group col-md-5 col-lg-7 ">
 								<label for="inputModelo">Modelo</label>
 								<select id = "inputModelo" name="modelo" class="form-control">
 									<option value=""></option>
-								</select>	
+								</select>
 							</div>
-							
-							<div class="form-group col-md-2 col-lg-1 ">
+							<div class="form-group col-md-2 col-lg-2 ">
 								<label for="inputAno">Ano</label>
 								<select id = "inputAno" name="ano" class="form-control">
-									<option value=""></option>
-								</select>	
+									<% var options = []; %>
+						            <% for(var i = 2019; i >= 1900; i--) { %>
+						              <option value='<%= i %>'><%= i %></option>
+						            <% } %>
+								</select>
 							</div>
 						</div>
 
@@ -81,10 +83,10 @@
 									<option value="2.0-2.9">2.0 - 2.9</option>
 									<option value="3.0-3.9">3.0 - 3.9</option>
 									<option value="4.0+">4.0 ou mais</option>
-								</select>	
-								
+								</select>
+
 							</div>
-							
+
 							<div class="form-group col-md-3 offset-lg-1">
 								<label for="inputTipoVeic">Tipo de veículo</label>
 								<select id = "inputTipoVeic" name="tipo_veiculo" class="form-control">
@@ -97,18 +99,18 @@
 									<option value="Antigo">Antigo</option>
 									<option value="Buggy">Buggy</option>
 									<option value="Passeio">Passeio</option>
-								</select>	
-								
+								</select>
+
 							</div>
-							
+
 							<div class="form-group col-lg-1 offset-lg-1 col-md-2">
 								<label for="inputPortas">Portas</label>
 								<select id = "inputPortas" name="num_portas" class="form-control">
 									<option value="2Portas">2</option>
 									<option value="4Portas">4</option>
-								</select>	
+								</select>
 							</div>
-							
+
 							<div class="form-group col-md-2 offset-lg-1">
 								<label for="inputTipoVeic">Cor</label>
 								<select id = "inputCorVeic" name="cor_veiculo" class="form-control">
@@ -122,22 +124,22 @@
 									<option value="Verde">Verde</option>
 									<option value="Laranja">Laranja</option>
 									<option value="Outra">Outra</option>
-								</select>	
-								
+								</select>
+
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-md-4">
 								<legend class="col-form-label pt-0">Câmbio</legend>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="cambio" id="cambio_manual" value="manual" checked>
 									<label class="form-check-label" for="cambio_manual">
 										Manual
 									</label>
 								</div>
-								
+
 
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="cambio" id="cambio_automatico" value="automatico">
@@ -145,17 +147,17 @@
 										Automático
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="cambio" id="cambio_semiautomatico" value="semiautomatico">
 									<label class="form-check-label" for="cambio_semiautomatico">
 										Semi-Automático
 									</label>
 								</div>
-								
 
-							</div>	
-							<div class="col-md-4">									
+
+							</div>
+							<div class="col-md-4">
 								<legend class="col-form-label pt-0">Combustível</legend>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="combustivel" id="gasolina" value="gasolina" checked>
@@ -163,14 +165,14 @@
 										Gasolina
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="combustivel" id="alcool" value="alcool">
 									<label class="form-check-label" for="alcool">
 										Álcool
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="combustivel" id="flex" value="flex">
 									<label class="form-check-label" for="flex">
@@ -183,7 +185,7 @@
 										Gás Natural
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="combustivel" id="diesel" value="diesel">
 									<label class="form-check-label" for="diesel">
@@ -194,15 +196,15 @@
 							</div>
 							<div class="col-md-4">
 								<legend class="col-form-label  pt-0">Direção</legend>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="direcao" id="hidraulica" value="hidraulica" checked>
 									<label class="form-check-label" for="hidraulica">
 										Hidráulica
 									</label>
 								</div>
-								
-								
+
+
 
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="direcao" id="eletrica" value="eletrica">
@@ -210,22 +212,22 @@
 										Elétrica
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="direcao" id="mecanica" value="mecanica">
 									<label class="form-check-label" for="mecanica">
 										Mecânica
 									</label>
 								</div>
-								
+
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="direcao" id="assistida" value="assistida">
 									<label class="form-check-label" for="assistida">
 										Assistida
 									</label>
 								</div>
-								
-								
+
+
 							</div>
 						</div>
 
@@ -239,28 +241,28 @@
 								<label class="form-check-label" for="airBag">Air bag</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group   form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="arCondicionado" value="arCondicionado">
 								<label class="form-check-label" for="arCondicionado">Ar condicionado</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="alarme" value="alarme">
 								<label class="form-check-label" for="alarme">Alarme</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="travaEletrica" value="travaEletrica">
 								<label class="form-check-label" for="travaEletrica">Trava elétrica</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="som" value="som">
@@ -273,22 +275,22 @@
 								<input class="form-check-input" type="checkbox" id="vidroEletrico" value="vidroEletrico">
 								<label class="form-check-label" for="vidroEletrico">Vidro elétrica</label>
 							</div>
-						</div>	
-						
+						</div>
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline ">
 								<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
 								<label class="form-check-label" for="inlineCheckbox1">Blindado</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline ">
 								<input class="form-check-input" type="checkbox" id="sensorRe" value="sensorRe">
 								<label class="form-check-label" for="sensorRe">Sensor de ré</label>
 							</div>
 						</div>
-						
+
 						<div class="form-row">
 							<div class="form-group form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="cameraRe" value="cameraRe">
@@ -300,19 +302,25 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-6 offset-md-1" data-role="rangeslider">
-						<label for="price-min">Preço Minimo</label>
-        				<input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-        				<label for="price-max">Preço Máximo</label>
-        				<input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+					<div class="col-md-6 offset-md-1 rangeslider">
+            <div>
+						  <label for="price-min">Preço Minimo:</label>
+    				  <input type="range" name="priceMin" id="priceMin" value="50" min="20" max="500">
+              <span id="valueMin">200</span>
+            </div>
+            <div>
+              <label for="price-max">Preço Máximo:</label>
+              <input type="range" name="priceMax" id="priceMax" value="400" min="20" max="500">
+              <span id="valueMax">400</span>
+            </div>
 					</div>
 					<div class="col-md-3 pt-5 d-flex flex-row-reverse">
-						<button type="submit" class="btn btn-success" id="botaoBuscarC"> Buscar <i class="fa fa-search"></i> </button> 
+						<button type="submit" class="btn btn-success" id="botaoBuscarC">Buscar<i class="fa fa-search"></i> </button>
 					</div>
 				</div>
 			</form>
 		</div>
-		
+
 		<!-- Pesquisar Usuário (ABA)-->
 		<div class="tab-pane fade" id="nav-pesqUsuario" role="tabpanel" aria-labelledby="nav-pesqUsuario-tab">
 			<form  class="container content rounded" action="/usuario/list">
@@ -324,7 +332,7 @@
 				</div>
 				<div class= "form-row ">
 					<div class= "col-md-9 d-flex flex-row-reverse">
-						<button type="submit" class="btn btn-success" id="botaoBuscarU"> Buscar <i class="fa fa-search"></i></button> 
+						<button type="submit" class="btn btn-success" id="botaoBuscarU"> Buscar <i class="fa fa-search"></i></button>
 					</div>
 				</div>
 

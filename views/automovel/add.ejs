@@ -1,4 +1,4 @@
-<div class="container container-cadatrar-carros">
+<div class="container rounded container-cadatrar-carros">
   <div class="row">
     <div class="col-lg-12">
       <div class="header">
@@ -32,10 +32,13 @@
 
       <div class="form-group col-md-1 offset-md-1">
         <label for="Ano">Ano</label>
-        <input type="text" class="form-control" name="Ano" id="inputAno" placeholder="Ano do Veículo">
-        <!--<select id = "inputAno" name="ano" class="form-control">-->
-        <!--  <option value=""></option>-->
-        <!--</select> -->
+        <!--<input type="text" class="form-control" name="Ano" id="inputAno" placeholder="Ano do Veículo">-->
+        <select id = "inputAno" name="ano" class="form-control">
+            <% var options = []; %>
+            <% for(var i = 2019; i >= 1900; i--) { %>
+              <option value='<%= i %>'><%= i %></option>
+            <% } %>
+        </select> 
       </div>
     </div>
 
@@ -319,21 +322,20 @@
       </div>
     </div>
 
-    <!--<div class="form-row dragdrop-area">-->
-    <!--  <div class="form-group offset-md-1">-->
-    <!--    <label for="documentacao">Documentação</label>-->
-    <!--    <input type="file" name="FotoDocumento" class="form-control-file" id="fotoDocumento">-->
-    <!--    <span>Ou arraste e solte um documento na área pontilhada.</span>-->
-    <!--  </div>-->
-    <!--</div>-->
 
-    <!--<div class="form-row dragdrop-area ">-->
+    <div class="form-row">
+      <div class="form-group offset-md-1">
+        <label for="FotoVeiculo">Foto de frente do veículo</label>
+        <input type="file" name="FotoVeiculo" class="form-control-file" id="FotoFrente">
+      </div>
+    </div>
+
+    <!--<div class="form-row dragdrop-area ">
         <div class="form-group offset-md-1">
           <label for="FotoVeiculo">Foto de frente do veículo</label>
           <input type="file" name="FotoVeiculo"  id="FotoFrente">
-          <!--<span>Ou arraste e solte uma foto na área pontilhada.</span>-->
         </div>
-      <!--</div>-->
+    </div>-->
 
       <!--<div class="form-row dragdrop-area ">-->
       <!--  <div class="form-group offset-md-1">-->
@@ -358,10 +360,10 @@
       </div>
     </div>
 
-    <div class= "form-row">
-      <div class= "col-md-3 offset-md-8">
-        <button type="submit" class="btn btn-success" id="botaoFinalizar"> Finalizar </button> 
-      </div>
-    </div>
+			<div class= "form-row ">
+				<div class= "col-md-11 d-flex flex-row-reverse">
+					<button type="submit" class="btn btn-success" id="botaoFinalizar"> Finalizar </button> 
+				</div>
+			</div>
   </form>
 </div>
