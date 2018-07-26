@@ -3,6 +3,7 @@ $(document).ready(function(){
 	//var container = $('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 	date_input.datepicker({
 		format: 'dd/mm/yyyy',
-		language: "pt-BR"
+		language: "pt-BR",
+		orientation: 'top'
 	})
 });
