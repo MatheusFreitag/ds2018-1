@@ -255,6 +255,8 @@ label, legend{
 
 .container-adicionar-usuario {
     background-color: #f0f0f0;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 .container-adicionar-usuario h1 {
     color: #222;
