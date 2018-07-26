@@ -182,6 +182,7 @@ label, legend{
 
 /* Stars */
 .starrating > input {
+    pointer-events: none;
     display: none;
     pointer-events: none;
 }  /* Remove radio buttons */
@@ -189,6 +190,7 @@ label, legend{
 .starrating > label:before {
   content: "\f005"; /* Star */
   display: inline-block;
+  pointer-events: none;
 }
 
 .starrating > label{
@@ -196,6 +198,10 @@ label, legend{
   padding-left: 0.5em;
   pointer-events: none;
 }
+
+.starrating > input:checked ~ label
+{ color: gold; } /* Set yellow color when star checked */
+
 
 .reverse {
     display: flex;

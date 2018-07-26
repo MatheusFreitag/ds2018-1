@@ -94,6 +94,7 @@ module.exports = {
   },
 
   about: function(req,res){
+    console.log(req.params.id);
     if(req.session.authenticated == 'ok'){
       Usuario.query(`SELECT * from c9.Usuario WHERE CPF="${req.params.id}";`, ['u'], function(err, usuario) {
         if(err){
@@ -135,7 +136,7 @@ module.exports = {
 		if (req.body.FotoPerfil != '') {
 		  req.file('FotoPerfil').upload({
     		dirname: require('path').resolve(sails.config.appPath, 'assets/images/usuario'),
-    		saveAs: req.body.Nome + '_' + "FotoPerfil." + (req.file('FotoPerfil')._files[0].stream.filename).substr(req.file('FotoPerfil')._files[0].stream.filename.length - 3)
+    		saveAs: req.session.CPF + '_' + "FotoPerfil." + (req.file('FotoPerfil')._files[0].stream.filename).substr(req.file('FotoPerfil')._files[0].stream.filename.length - 3)
 	    	}, function (err, uploadedFiles) {
 
 			  console.log(uploadedFiles);
@@ -143,20 +144,20 @@ module.exports = {
         var tam = lista.length;
         var nomeFoto = lista[tam-1];
 
-		    Usuario.query(`UPDATE c9.Usuario SET Email="${req.body.Email}", Senha="${req.body.Senha}", Endereco="${req.body.Endereco}", Telefone="${req.body.Telefone}",  Cidade="${req.body.Cidade}", Estado="${req.body.Estado}", Foto="${nomeFoto}" WHERE CPF="${req.session.CPF}";`, [], function(err, p){
+		    Usuario.query(`UPDATE c9.Usuario SET Nome = "${req.body.Nome}", Email="${req.body.Email}", Senha="${req.body.Senha}", Endereco="${req.body.Endereco}", Telefone="${req.body.Telefone}",  Cidade="${req.body.Cidade}", Estado="${req.body.Estado}", Foto="${nomeFoto}", Senha = "${req.body.Senha}" WHERE CPF="${req.session.CPF}";`, [], function(err, p){
           if(err){
             res.send(500, {error: "Database error"});
           }
-          res.redirect('/usuario/list');
+          res.redirect("usuario/list");
         });
 		  })
 		}
 		else{
-		  Usuario.query(`UPDATE c9.Usuario SET Email="${req.body.Email}", Senha="${req.body.Senha}", Endereco="${req.body.Endereco}", Telefone="${req.body.Telefone}",  Cidade="${req.body.Cidade}", Estado="${req.body.Estado}" WHERE CPF="${req.session.CPF}";`, [], function(err, p){
+		  Usuario.query(`UPDATE c9.Usuario SET Nome = "${req.body.Nome}", Email="${req.body.Email}", Senha="${req.body.Senha}", Endereco="${req.body.Endereco}", Telefone="${req.body.Telefone}",  Cidade="${req.body.Cidade}", Estado="${req.body.Estado}", Senha = "${req.body.Senha}" WHERE CPF="${req.session.CPF}";`, [], function(err, p){
           if(err){
             res.send(500, {error: "Database error"});
           }
-          res.redirect('/usuario/list/');
+          res.redirect("usuario/list");
       });
 		}
   },
