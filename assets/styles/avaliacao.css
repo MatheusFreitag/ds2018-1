@@ -18,21 +18,21 @@
 }
 
 /* Stars */
-.starrating > input {display: none;}  /* Remove radio buttons */
+.starrating-avaliacao > input {display: none;}  /* Remove radio buttons */
 
-.starrating > label:before {
+.starrating-avaliacao > label:before {
   content: "\f005"; /* Star */
   display: inline-block;
 }
 
-.starrating > label{
+.starrating-avaliacao > label{
   color: gainsboro; /* Start color when not clicked */
 }
 
-.starrating > input:checked ~ label
+.starrating-avaliacao > input:checked ~ label
 { color: gold; } /* Set yellow color when star checked */
 
-.starrating > input:hover ~ label
+.starrating-avaliacao > input:hover ~ label
 { color: gold;  } /* Set yellow color when star hover */
 
 
