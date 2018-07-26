@@ -17,12 +17,13 @@ module.exports = {
   },
 
   listaAlugueis: function(req,res){
+    console.log("chegou");
     if(req.session.authenticated == 'ok'){
+      console.log(req.session.CPF);
       Usuario.query(`SELECT * from c9.Aluguel WHERE (CPF="${req.session.CPF}") AND (DataFim >= CURDATE());`, [], function(err, alugueis){
         if(err){
           res.send(500, {error: "Database Error"});
         }
-
       res.view('usuario/alugueis', {alugueis: alugueis});
       });
     }

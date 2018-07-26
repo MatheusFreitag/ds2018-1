@@ -8,9 +8,9 @@
 module.exports = {
 	list:function(req,res){
     	if(req.session.authenticated == 'ok'){
-			console.log(req.param('cpf') != undefined);
-			if(req.param('CPF') != undefined){
-				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.param('CPF')}";`, [], function(err, automoveis) {
+    		console.log(req.params.id);
+			if(req.params.id != undefined){
+				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.params.id}";`, [], function(err, automoveis) {
 				    if(err) { 
 				        res.send(500, {error: "Database error"});
 				    }
@@ -18,7 +18,6 @@ module.exports = {
 				});
 			}
 			else{
-				
 				Automovel.query("SELECT * from c9.Automovel;", [], function(err, automoveis) {
 				    if(err) { 
 				        res.send(500, {error: "Database error"});
@@ -29,7 +28,7 @@ module.exports = {
 			}
     	 }
     	 else{
-    	 	res.redirect('/automovel/list');
+    	 	res.redirect('/usuario/add');
     	 }
     },
     add: function(req,res){
