@@ -8,7 +8,6 @@
 	right: 0;
 }
 
-
 .dropdown-toggle::after {
     display: None;
 }
@@ -44,7 +43,9 @@ label.fa-star-avaliacao:hover { transform:  scale(1.5); }
   font-size: 1.2em;
 }
 
-
+.form-row-avaliacao{
+    color: white;
+}
 @media (min-width: 769px) {
     .form-row-avaliacao{
         text-align: right;
