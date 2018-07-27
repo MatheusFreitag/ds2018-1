@@ -312,13 +312,21 @@
 
 
     <div class="form-row">
-      <div class="form-group col-md-6 offset-md-1">
+      <div class="form-group col-md-5 offset-md-1">
         <label for="descricao">Descrição do veículo</label>
         <textarea class="form-control" id="inputDescricao" name="Descricao" rows="3"></textarea>
       </div>
-      <div class="form-group col-md-3 offset-md-1">
+      <div class="form-group col-md-4 offset-md-1">
+        <!--
         <label for="precoDiaria">Preço da diária</label>
         <input type="textArea" class="form-control" name="precoDiaria" id="inputDiaria" placeholder="50">
+        -->
+        <div class="rangeslider">
+					<label for="price-min">Preço da diária:</label>
+    				  <input type="range" name="precoDiaria" id="priceMin" value="50" min="20" max="500">
+              <span id="valueMin">200</span>
+        </div>
+
       </div>
     </div>
 
