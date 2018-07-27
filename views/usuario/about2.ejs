@@ -57,16 +57,19 @@
     </div>
   </div>
 
-  <form action="/automovel/list/<%=usuario.CPF%>">
-    <div class= "form-row">
-    <div class= "col-6 col-md-2 offset-md-1">
-      <button type="submit" href="/automovel/list/<%=usuario.CPF%>" class="btn btn-info" id="botaoCarros_User"> Carros Disponíveis </button>
+ <div class="row">
+     <div class="col-md-6">
+          <form action="/automovel/list/<%=usuario.CPF%>">
+                <button type="submit" href="/automovel/list/<%=usuario.CPF%>" class="btn btn-info" id="botaoCarros_User"> Meus Carros </button>
+          </form>
     </div>
-        <div class= "col-6 col-md-2 offset-md-1">
-      <button type="submit" href="/usario/delete/<%=usuario.CPF%>" class="btn btn-info" id="botaoExcluir"> Excluir </button>
+     <div class="col-md-6">
+      <form action="/automovel/delete/<%=usuario.CPF%>">
+            <button type="submit" href="/automovel/delete/<%=usuario.CPF%>" class="btn btn-danger" id="botaoExcluir"> Excluir Perfil </button>
+      </form>
     </div>
-  </div>
-  </form>
+     
+ </div>
   
   </div>
   </div>
