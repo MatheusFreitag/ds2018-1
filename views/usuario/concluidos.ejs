@@ -1,25 +1,28 @@
-<h1 class="titulo">Reservas Concluídas</h1>
-<div class="container-fluid listar-alugueis">
+<h1 class="titulo">Reservas Concluídas  </h1>
+<div class="container listar-usuarios">
   <div class="row  justify-content-center">
     <% alugueis.forEach(function(aluguel){ %>
-      <div class="card bg-light border-dark mb-3 mr-3" style="max-width: 22rem;">
-        <img class="card-img-top" src="/images/automovel/<%=aluguel.FotoVeiculoFrente%>" alt="foto do automóvel">
+      <div class="card bg-light border-dark mb-3 mr-3" style="max-width: 18rem; min-width: 18rem;">
+       <div class="classimage d-flex justify-content-center"> <img class="card-img-top" src="/images/automovel/<%=aluguel.FotoVeiculoFrente%>" alt="Card image cap">  </div>
 
         <div class="card-header">
           <div class="form-row">
-            <h5 class="card-title"><%=aluguel.titulo%></h5>
+            <h5 class="card-title"><%=aluguel.Titulo%></h5>
   
-            <div class="center col-lg-3 d-flex align-items-end mb-3" >
-				<p class="card-text">Reserva ocorrida entre <%=aluguel.DataInicio%> e <%=aluguel.DataInicio%></p>
+        </div>
+
+        <div class="card-body">
+			<div  class="row">
+			  <div class="col-lg-12">
+							<p class="card-text">Reserva ocorrida entre <%=new Date(aluguel.DataInicio).getDate()%>/0<%= 1 + new Date(aluguel.DataInicio).getMonth()%>/<%= 1900 + new Date(aluguel.DataInicio).getYear()%> e <%=new Date(aluguel.DataFim).getDate()%>/0<%= 1 + new Date(aluguel.DataFim).getMonth()%>/<%= 1900 + new Date(aluguel.DataFim).getYear()%></p>
+			  </div>
+
 			</div>
-          </div>
-        </div>
-
-        <div class="card-footer text-right">
-          <a href="/usuario/avaliacao?idAluguel=<%=aluguel.idAluguel%>"><button type="button" class="btn btn-info">Avaliar</button></a>
-        </div>
-
-      </div>
-    <% })%>
+		  </div>
+  
+		  <div class="card-footer text-right">
+				<a href="/usuario/avaliacao?idAluguel=<%=aluguel.idAluguel%>"><button type="button" class="btn btn-info">Avaliar</button></a>		  </div>
+		</div>
+	  <% })%>
   </div>
 </div>
