@@ -77,12 +77,51 @@ module.exports = {
   },
 
   avaliacaoConcluida: function(req, res){
-      console.log("oi");
-      console.log(req.params.id);
-      res.redirect('/usuario/list');
-      /*if(req.params.id != undefined){
+      if(req.params.id != undefined){
+        console.log(req.body);
         
-      }*/
+        var notaNovaAutomovel = (req.body.carro + req.body.verac + req.body.preco + req.body.comproment)/4;
+        var notaNovaUsuario = req.body.dialogo;
+        var CPFBusca;
+        var PlacaBusca;
+        
+        var segundaQ = function(CPFBusca, PlacaBusca){
+          Usuario.query(`SELECT * FROM c9.Usuario WHERE CPF="${CPFBusca}"`, [], function(err2, usuario){
+            
+            var notaUsuarioAntiga = usuario[0].Avaliacao;
+            var numeroAvaliacoesUsuarioAntiga = usuario[0].NumeroAvaliacoes;
+            var numeroAvaliacoesUsuarioNova = numeroAvaliacoesUsuarioAntiga+1;
+            var notaUsuarioFinal = ((notaUsuarioAntiga*numeroAvaliacoesUsuarioAntiga)+(notaNovaUsuario))/numeroAvaliacoesUsuarioNova;
+            Usuario.query(`UPDATE c9.Usuario SET Avaliacao="${notaUsuarioFinal}", NumeroAvaliacoes="${numeroAvaliacoesUsuarioNova} WHERE CPF="${CPFBusca}"`, [], function(err3){});
+            terceiraQ(PlacaBusca);
+          });
+        }
+        
+        var terceiraQ = function(PlacaBusca) {
+        Usuario.query(`SELECT * FROM c9.Automovel WHERE Placa="${PlacaBusca}"`, [], function(err4, automovel){
+            
+            var notaAutomovelAntiga = automovel[0].Avaliacao;
+            var numeroAvaliacoesAutomovelAntiga = automovel[0].NumeroAvaliacoes;
+            var numeroAvaliacoesAutomovelNova = numeroAvaliacoesAutomovelAntiga+1;
+            var notaAutomovelFinal = ((notaAutomovelAntiga*numeroAvaliacoesAutomovelAntiga)+(notaNovaAutomovel))/numeroAvaliacoesAutomovelNova;
+            Usuario.query(`UPDATE c9.Automovel SET Avaliacao="${notaAutomovelFinal}", NumeroAvaliacoes="${numeroAvaliacoesAutomovelNova} WHERE Placa="${PlacaBusca}"`, [], function(err5){});
+            
+        });
+        }
+        
+        
+        Usuario.query(`SELECT * FROM c9.Aluguel WHERE idAluguel="${req.params.id}"`, [], function(err, aluguel){
+          CPFBusca = aluguel[0].CPFDono;
+          PlacaBusca = aluguel[0].Placa;
+          segundaQ(CPFBusca, PlacaBusca);
+        });
+
+        
+       
+        
+        res.redirect('/usuario/list');
+        
+      }
   },
 
 
