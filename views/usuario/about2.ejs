@@ -6,12 +6,12 @@
     <div class="classimage d-flex justify-content-center"> <img class="card-img-top" src="/images/usuario/<%=usuario.Foto%>" alt="foto do usuário"> </div>
   </div>
     <div class="row">
-     <div class="col-md-6">
+     <div class="col-md-6 mb-3">
           <form action="/automovel/list/<%=usuario.CPF%>">
                 <button type="submit" href="/automovel/list/<%=usuario.CPF%>" class="btn btn-info" id="botaoCarros_User"> Meus Carros </button>
           </form>
     </div>
-     <div class="col-md-6">
+     <div class="col-md-6 mb-3">
       <form action="/usuario/delete/<%=usuario.CPF%>">
             <button type="submit" href="/usuario/delete/<%=usuario.CPF%>" class="btn btn-danger" id="botaoExcluir"> Excluir Perfil </button>
       </form>
