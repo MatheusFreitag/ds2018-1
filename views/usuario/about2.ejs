@@ -28,12 +28,13 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group reverse starrating offset-md-2">
-      <input type="radio" id="star5_preco" name="preco" value="5" onclick="javascript: return false;" /><label class="fas fa-star" for="star5_preco" title="5 estrelas"></label>
-      <input type="radio" id="star4_preco" name="preco" value="4" /><label class="fas fa-star" for="star4_preco" title="4 estrelas"></label>
-      <input type="radio" id="star3_preco" name="preco" value="3" /><label class="fas fa-star" for="star3_preco" title="3 estrelas"></label>
-      <input type="radio" id="star2_preco" name="preco" value="2" /><label class="fas fa-star" for="star2_preco" title="2 estrelas"></label>
-      <input type="radio" id="star1_preco" name="preco" value="1" /><label class="fas fa-star" for="star1_preco" title="1 estrela"></label>
+    <div class="form-group reverse starrating offset-sm-2">
+      <input type="radio" id="star5" class="star" name="dialogo" value="5" <%if(Math.floor(usuario.Avaliacao) == 5) {%> checked <% } %>
+      %><label class="fas fa-star" for="star5" title="5 estrelas"></label>
+      <input type="radio" id="star4" class="star" name="dialogo" value="4" <%if(Math.floor(usuario.Avaliacao) == 4) {%> checked <% } %>/><label class="fas fa-star" for="star4" title="4 estrelas"></label>
+      <input type="radio" id="star3" class="star" name="dialogo" value="3" <%if(Math.floor(usuario.Avaliacao) == 3) {%> checked <% } %>/><label class="fas fa-star" for="star3" title="3 estrelas"></label>
+      <input type="radio" id="star2" class="star" name="dialogo" value="2" <%if(Math.floor(usuario.Avaliacao) == 2) {%> checked <% } %>/><label class="fas fa-star" for="star2" title="2 estrelas"></label>
+      <input type="radio" id="star1" class="star" name="dialogo" value="1" <%if(Math.floor(usuario.Avaliacao) == 1) {%> checked <% } %>/><label class="fas fa-star" for="star1" title="1 estrela"></label>
     </div>
   </div>
 
