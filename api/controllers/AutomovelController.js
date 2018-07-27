@@ -84,7 +84,12 @@ module.exports = {
 				if(err){
 		    		res.send(500, {error: "Database error"});
 		    	}
-		        res.view('automovel/about', {automovel: automovel[0]});
+		    	if(req.session.CPF == automovel[0].CPF){
+		    		res.view('automovel/about2', {automovel: automovel[0]});
+		    	}
+		    	else{
+		    		res.view('automovel/about', {automovel: automovel[0]});
+		    	}
 		    })
 		}
 		else{
@@ -218,7 +223,7 @@ module.exports = {
 	},
 	delete:function(req,res){
 		if(req.session.authenticated == 'ok'){
-		    Usuario.query(`DELETE FROM c9.Automovel WHERE (placa="${req.params.id}") AND (DataFinal < CURDATE());`, [], function(err){
+		    Usuario.query(`DELETE FROM c9.Automovel WHERE (placa="${req.params.id}");`, [], function(err){
 		    	if(err){
 		    		res.send(500, {error: "Database error"});
 		    	}

@@ -105,7 +105,7 @@ module.exports = {
                 if(err){
                   res.send(500, {error: "Database error"});
                 }
-                res.redirect('/usuario/list');
+                res.redirect('/automovel/list');
               });
     	});
   },
@@ -117,7 +117,12 @@ module.exports = {
         if(err){
           res.send(500, {error: "Database error"});
         }
-        res.view('usuario/about', {usuario: usuario[0]});
+        if(req.session.CPF == usuario[0].CPF){
+          res.view('usuario/about2', {usuario: usuario[0]});
+        }
+        else{
+          res.view('usuario/about', {usuario: usuario[0]});
+        }
       })
     }
     else{
@@ -184,7 +189,7 @@ module.exports = {
         if(err){
           res.send(500, {error: "Database error"});
         }
-        res.redirect('usuario/list')
+        res.redirect('/usuario/logout');
       });
 
       return false;
