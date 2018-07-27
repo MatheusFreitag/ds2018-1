@@ -313,6 +313,9 @@ label, legend{
     .reserva .btn{
 		font-size: 0.9em;
 	}
+	.reserva .center{
+	    margin-right:3;
+	}
 }
 
 
@@ -320,6 +323,12 @@ label, legend{
     .reserva .card.row, .reserva .center{
 		display: flex;
 		justify-content: center;
+}
+
+@media (min-width: 769px) {
+    .reserva .form-row{
+        text-align: right;
+    }
 }
 
 
