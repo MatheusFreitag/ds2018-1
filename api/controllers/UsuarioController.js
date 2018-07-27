@@ -9,14 +9,17 @@ const util = require('util');
 module.exports = {
   list: function(req,res){
     
-      if(req.body.Nome != undefined){
+      if(req.params.id == "p"){
+        if(req.body.Nome != undefined){
           Usuario.query(`SELECT * from c9.Usuario WHERE (Nome="${req.body.Nome}")`, [], function(err, usuarios){
           if(err){
             res.send(500, {error: "Database Error"});
           }
           res.view('usuario/list', {usuarios: usuarios});
         });
+       }
       }
+      
       
       else{
           Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
@@ -74,15 +77,12 @@ module.exports = {
   },
 
   avaliacaoConcluida: function(req, res){
-    if(req.session.authenticated == 'ok'){
+      console.log("oi");
       console.log(req.params.id);
+      res.redirect('/usuario/list');
       /*if(req.params.id != undefined){
         
       }*/
-    }
-    else{
-      res.redirect('/usuario/add');
-    }
   },
 
 
