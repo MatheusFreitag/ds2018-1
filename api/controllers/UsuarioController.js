@@ -80,8 +80,8 @@ module.exports = {
       if(req.params.id != undefined){
         console.log(req.body);
         
-        var notaNovaAutomovel = req.body.carro;
-        var notaNovaUsuario = (req.body.dialogo + req.body.verac + req.body.preco + req.body.comproment)/4;
+        var notaNovaAutomovel = parseInt(req.body.carro);
+        var notaNovaUsuario = (parseInt(req.body.dialogo) + parseInt(req.body.verac) + parseInt(req.body.preco) + parseInt(req.body.comproment))/4;
         var CPFBusca;
         var PlacaBusca;
         
