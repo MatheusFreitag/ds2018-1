@@ -309,7 +309,11 @@ label, legend{
     height: auto;
 }
 
-@media (min-width: 769px )  and (max-width: 1190px) {
+.aluguelTitulo {
+    color:white;    
+}
+
+@media (min-width: 769px )  and (max-width: 1200px) {
     .reserva .btn{
 		font-size: 0.9em;
 	}
