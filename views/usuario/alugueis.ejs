@@ -9,7 +9,7 @@
           <div class="form-row">
             <h5 class="card-title"><%=aluguel.titulo%></h5>
 
-				<p class="card-text">Reservado de <%=aluguel.DataFim%> até <%=aluguel.DataFim%></p>
+				<p class="card-text">Reservado de <%=new Date(aluguel.DataInicio).getDate()%>/0<%= 1 + new Date(aluguel.DataInicio).getMonth()%>/<%= 1900 + new Date(aluguel.DataInicio).getYear()%> e <%=new Date(aluguel.DataFim).getDate()%>/0<%= 1 + new Date(aluguel.DataFim).getMonth()%>/<%= 1900 + new Date(aluguel.DataFim).getYear()%></p>
 			</div>
           </div>
 
@@ -25,3 +25,4 @@
     <% })%>
   </div>
 </div>
+
