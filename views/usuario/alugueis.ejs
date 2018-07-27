@@ -8,12 +8,10 @@
         <div class="card-header">
           <div class="form-row">
             <h5 class="card-title"><%=aluguel.titulo%></h5>
-  
-            <div class="center col-lg-3 d-flex align-items-end mb-3" >
-				<p class="card-text">Reservado de <%=aluguel.DataInicio%> até <%=aluguel.DataFim%></p>
+
+				<p class="card-text">Reservado de <%=aluguel.DataFim.toString()%> até <%=aluguel.DataFim%></p>
 			</div>
           </div>
-        </div>
 
         <div class="card-footer text-right">
           <a href="/usuario/about/<%=aluguel.CPFDono%>"><button type="button" class="btn btn-info">Contatar Locatário</button></a>
