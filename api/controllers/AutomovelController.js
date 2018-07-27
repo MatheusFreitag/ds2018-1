@@ -7,15 +7,30 @@
 
 module.exports = {
 	list:function(req,res){
-    	if(req.session.authenticated == 'ok'){
     		console.log(req.params.id);
+    		console.log(req.body);
+    
 			if(req.params.id != undefined){
-				Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.params.id}";`, [], function(err, automoveis) {
+				
+				if(req.params.id == "p"){
+					Automovel.query(`SELECT * FROM c9.Automovel WHERE Estado="${req.body.Estado}" OR Marca="${req.body.Marca}" OR Ano="${req.body.Ano}" OR PotenciaMotor="${req.body.Potencia}" OR Tipo="${req.body.TipoVeiculo}" OR Portas="${req.body.NumPortas}" OR Cor="${req.body.CorVeiculo}" OR Cambio="${req.body.Cambio}" OR Combustivel="${req.body.Combustivel}" OR Direcao="${req.body.Direcao}" OR (PrecoDiaria >= ${req.body.PriceMin} AND PrecoDiaria <= ${req.body.PriceMax})`, [], function(err, automoveis){
+						if(err){
+							res.send(500, {error: "Database error"});
+							console.log(err);
+						}
+						res.view('automovel/list', {automoveis: automoveis});
+					})
+				}
+				
+				else{
+					Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.params.id}";`, [], function(err, automoveis) {
 				    if(err) { 
 				        res.send(500, {error: "Database error"});
 				    }
 				    res.view('automovel/list', {automoveis: automoveis});
 				});
+				}
+				
 			}
 			else{
 				Automovel.query("SELECT * from c9.Automovel;", [], function(err, automoveis) {
@@ -26,10 +41,6 @@ module.exports = {
 				    res.view('automovel/list', {automoveis: automoveis});
 				});
 			}
-    	 }
-    	 else{
-    	 	res.redirect('/usuario/add');
-    	 }
     },
     add: function(req,res){
     	if(req.session.authenticated == 'ok'){
@@ -40,6 +51,7 @@ module.exports = {
     	}
     },
     create: function(req,res){
+    	
     	if(req.session.authenticated == 'ok'){
     	
 	    	req.file('FotoVeiculo').upload({ 
