@@ -80,8 +80,8 @@ module.exports = {
       if(req.params.id != undefined){
         console.log(req.body);
         
-        var notaNovaAutomovel = (req.body.carro + req.body.verac + req.body.preco + req.body.comproment)/4;
-        var notaNovaUsuario = req.body.dialogo;
+        var notaNovaAutomovel = req.body.carro;
+        var notaNovaUsuario = (req.body.dialogo + req.body.verac + req.body.preco + req.body.comproment)/4;
         var CPFBusca;
         var PlacaBusca;
         
@@ -109,10 +109,15 @@ module.exports = {
             var numeroAvaliacoesAutomovelNova = numeroAvaliacoesAutomovelAntiga+1;
             var notaAutomovelFinal = ((notaAutomovelAntiga*numeroAvaliacoesAutomovelAntiga)+(notaNovaAutomovel))/numeroAvaliacoesAutomovelNova;
             Usuario.query(`UPDATE c9.Automovel SET Avaliacao="${notaAutomovelFinal}", NumeroAvaliacoes="${numeroAvaliacoesAutomovelNova}" WHERE Placa="${PlacaBusca}"`, [], function(err5){});
-            
+            quartaQ();
         });
         }
         
+        var quartaQ = function(){
+          Usuario.query(`DELETE FROM c9.Aluguel WHERE idAluguel="${req.params.id}"`, [], function(err6, aluguel){
+            res.redirect('/usuario/listaConcluidos');
+          })
+        }
         
         Usuario.query(`SELECT * FROM c9.Aluguel WHERE idAluguel="${req.params.id}"`, [], function(err, aluguel){
           CPFBusca = aluguel[0].CPFDono;
@@ -125,7 +130,6 @@ module.exports = {
         
        
         
-        res.redirect('/usuario/list');
         
       }
   },
