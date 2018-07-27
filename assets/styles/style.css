@@ -309,5 +309,17 @@ label, legend{
     height: auto;
 }
 
+@media (min-width: 769px )  and (max-width: 1190px) {
+    .reserva .btn{
+		font-size: 0.9em;
+	}
+}
+
+
+@media (max-width: 991px ){
+    .reserva .card.row, .reserva .center{
+		display: flex;
+		justify-content: center;
+}
 
 
