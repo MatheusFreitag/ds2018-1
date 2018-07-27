@@ -88,11 +88,13 @@ module.exports = {
         var segundaQ = function(CPFBusca, PlacaBusca){
           Usuario.query(`SELECT * FROM c9.Usuario WHERE CPF="${CPFBusca}"`, [], function(err2, usuario){
             
+            console.log(CPFBusca);
+            console.log(PlacaBusca);
             var notaUsuarioAntiga = usuario[0].Avaliacao;
             var numeroAvaliacoesUsuarioAntiga = usuario[0].NumeroAvaliacoes;
             var numeroAvaliacoesUsuarioNova = numeroAvaliacoesUsuarioAntiga+1;
             var notaUsuarioFinal = ((notaUsuarioAntiga*numeroAvaliacoesUsuarioAntiga)+(notaNovaUsuario))/numeroAvaliacoesUsuarioNova;
-            Usuario.query(`UPDATE c9.Usuario SET Avaliacao="${notaUsuarioFinal}", NumeroAvaliacoes="${numeroAvaliacoesUsuarioNova} WHERE CPF="${CPFBusca}"`, [], function(err3){});
+            Usuario.query(`UPDATE c9.Usuario SET Avaliacao="${notaUsuarioFinal}", NumeroAvaliacoes="${numeroAvaliacoesUsuarioNova}" WHERE CPF="${CPFBusca}"`, [], function(err3){});
             terceiraQ(PlacaBusca);
           });
         }
@@ -100,11 +102,13 @@ module.exports = {
         var terceiraQ = function(PlacaBusca) {
         Usuario.query(`SELECT * FROM c9.Automovel WHERE Placa="${PlacaBusca}"`, [], function(err4, automovel){
             
+            console.log(CPFBusca);
+            console.log(PlacaBusca);
             var notaAutomovelAntiga = automovel[0].Avaliacao;
             var numeroAvaliacoesAutomovelAntiga = automovel[0].NumeroAvaliacoes;
             var numeroAvaliacoesAutomovelNova = numeroAvaliacoesAutomovelAntiga+1;
             var notaAutomovelFinal = ((notaAutomovelAntiga*numeroAvaliacoesAutomovelAntiga)+(notaNovaAutomovel))/numeroAvaliacoesAutomovelNova;
-            Usuario.query(`UPDATE c9.Automovel SET Avaliacao="${notaAutomovelFinal}", NumeroAvaliacoes="${numeroAvaliacoesAutomovelNova} WHERE Placa="${PlacaBusca}"`, [], function(err5){});
+            Usuario.query(`UPDATE c9.Automovel SET Avaliacao="${notaAutomovelFinal}", NumeroAvaliacoes="${numeroAvaliacoesAutomovelNova}" WHERE Placa="${PlacaBusca}"`, [], function(err5){});
             
         });
         }
@@ -113,6 +117,8 @@ module.exports = {
         Usuario.query(`SELECT * FROM c9.Aluguel WHERE idAluguel="${req.params.id}"`, [], function(err, aluguel){
           CPFBusca = aluguel[0].CPFDono;
           PlacaBusca = aluguel[0].Placa;
+          console.log(CPFBusca);
+          console.log(PlacaBusca);
           segundaQ(CPFBusca, PlacaBusca);
         });
 
