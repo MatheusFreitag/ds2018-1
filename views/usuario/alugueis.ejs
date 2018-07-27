@@ -1,0 +1,37 @@
+<h1 class="titulo">Minhas Reservas</h1>
+<div class="container-fluid listar-alugueis">
+  <div class="row  justify-content-center">
+    <% alugueis.forEach(function(aluguel){ %>
+      <div class="card row" style="flex-direction:row; border:2px solid rgba(255,255,255,0.3);">
+  				<div class="bg-light col-lg-3 col-md-6 d-flex align-items-center" style="max-width: 22rem;">
+							<img class="card-img-top" src="/images/automovel/<%=aluguel.FotoVeiculoFrente%>" alt="foto do automóvel">
+				</div>
+				
+						<div class="aluguel center col-lg-2 d-flex align-items-center">
+							<h5 class="card-title"><%=aluguel.titulo%></h5>
+						</div>
+						
+						<div class="aluguel center col-lg-3 d-flex align-items-end mb-3" >
+							<p class="card-text">Reservado de <%=aluguel.DataFim%> até <%=aluguel.DataFim%></p>
+						</div>
+
+        <div class="card-header">
+          <div class="form-row">
+            <h5 class="card-title"><%=aluguel.titulo%></h5>
+
+				<p class="card-text">Reservado de <%=aluguel.DataFim%> até <%=aluguel.DataFim%></p>
+			</div>
+          </div>
+
+        <div class="card-footer text-right">
+          <a href="/usuario/about/<%=aluguel.CPFDono%>"><button type="button" class="btn btn-info">Contatar Locatário</button></a>
+        </div>
+        
+        <div class="card-footer text-left">
+          <a href="/automovel/about/<%=aluguel.Placa%>"><button type="button" class="btn btn-info">Perfil do Carro</button></a>
+        </div>
+
+      </div>
+    <% })%>
+  </div>
+</div>
