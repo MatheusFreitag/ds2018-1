@@ -8,12 +8,25 @@ const util = require('util');
 
 module.exports = {
   list: function(req,res){
-      Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
-        if(err) {
-          res.send(500, {error: "Database error"});
-        }
-        res.view('usuario/list', {usuarios: usuarios});
-      });
+    
+      if(req.body.Nome != undefined){
+          Usuario.query(`SELECT * from c9.Usuario WHERE (Nome="${req.body.Nome}")`, [], function(err, usuarios){
+          if(err){
+            res.send(500, {error: "Database Error"});
+          }
+          res.view('usuario/list', {usuarios: usuarios});
+        });
+      }
+      
+      else{
+          Usuario.query('SELECT * from c9.Usuario;', [], function(err, usuarios) {
+          if(err) {
+            res.send(500, {error: "Database error"});
+          }
+          res.view('usuario/list', {usuarios: usuarios});
+        });
+      }
+      
   },
 
   listaAlugueis: function(req,res){
@@ -62,7 +75,10 @@ module.exports = {
 
   avaliacaoConcluida: function(req, res){
     if(req.session.authenticated == 'ok'){
-
+      console.log(req.params.id);
+      /*if(req.params.id != undefined){
+        
+      }*/
     }
     else{
       res.redirect('/usuario/add');
