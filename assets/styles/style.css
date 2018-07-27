@@ -327,6 +327,7 @@ label, legend{
     .reserva .card.row, .reserva .center{
 		display: flex;
 		justify-content: center;
+    }
 }
 
 @media (min-width: 769px) {
