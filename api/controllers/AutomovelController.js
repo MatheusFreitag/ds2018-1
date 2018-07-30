@@ -13,23 +13,13 @@ module.exports = {
 			if(req.params.id != undefined){
 				
 				if(req.params.id == "p"){
-					if(req.body.Cidade == "Pelotas"){
-						Automovel.query(`SELECT * from c9.Automovel WHERE Cidade="${req.body.Cidade}";`, [], function(err, automoveis) {
-					    if(err) { 
-					        res.send(500, {error: "Database error"});
-					    }
-					    res.view('automovel/list', {automoveis: automoveis});
-						});
-					}
-					else{
 						Automovel.query(`SELECT * FROM c9.Automovel WHERE Estado="${req.body.Estado}" OR Marca="${req.body.Marca}" OR Ano="${req.body.Ano}" OR PotenciaMotor="${req.body.Potencia}" OR Tipo="${req.body.TipoVeiculo}" OR Portas="${req.body.NumPortas}" OR Cor="${req.body.CorVeiculo}" OR Cambio="${req.body.Cambio}" OR Combustivel="${req.body.Combustivel}" OR Direcao="${req.body.Direcao}" OR (PrecoDiaria >= ${req.body.PriceMin} AND PrecoDiaria <= ${req.body.PriceMax})`, [], function(err, automoveis){
 						if(err){
 							res.send(500, {error: "Database error"});
 							console.log(err);
 						}
 						res.view('automovel/list', {automoveis: automoveis});
-					})
-					}
+					});
 				}
 				else{
 					Automovel.query(`SELECT * from c9.Automovel WHERE CPF="${req.params.id}";`, [], function(err, automoveis) {
